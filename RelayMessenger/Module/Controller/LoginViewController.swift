@@ -11,6 +11,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     //MARK: - Properties
+    var viewModel = LoginViewModel()
     private let welcomeLabel: UILabel = {
         let label = UILabel()
         label.text = "RelayMessenger💬"
@@ -33,7 +34,7 @@ class LoginViewController: UIViewController {
         tf.setHeight(50)
         tf.tintColor = .black
         tf.placeholder = "Email"
-        tf.backgroundColor = .lightGray
+        tf.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         tf.keyboardType = .emailAddress
         tf.layer.cornerRadius = 5
         return tf
@@ -44,7 +45,7 @@ class LoginViewController: UIViewController {
         tf.setHeight(50)
         tf.tintColor = .black
         tf.placeholder = "Password"
-        tf.backgroundColor = .lightGray
+        tf.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         tf.isSecureTextEntry = true
         tf.layer.cornerRadius = 5
         return tf
@@ -55,7 +56,8 @@ class LoginViewController: UIViewController {
         button.setTitle("Login", for: .normal)
         button.setHeight(50)
         button.layer.cornerRadius = 10
-        button.backgroundColor = #colorLiteral(red: 0, green: 0.0745, blue: 0.5176, alpha: 1)
+        button.backgroundColor = #colorLiteral(red: 0, green: 0.0745, blue: 0.5176, alpha: 1).withAlphaComponent(0.5)
+        button.isEnabled = false
         button.tintColor = .white
         button.titleLabel?.font = .boldSystemFont(ofSize: 18)
         button.addTarget(self, action: #selector(handleLoginVC), for: .touchUpInside)
@@ -64,22 +66,16 @@ class LoginViewController: UIViewController {
     
     private lazy var forgetPasswordButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Forgot your password? Get help signing in", for: .normal)
         button.setHeight(50)
-        button.layer.cornerRadius = 10
-        button.tintColor = .black
-        button.titleLabel?.font = .boldSystemFont(ofSize: 18)
+        button.attributedText(firstString: "Forgot your password?", secondString: "Get help signing in")
         button.addTarget(self, action: #selector(handleForgetPassword), for: .touchUpInside)
         return button
     }()
     
     private lazy var signUpButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Don't have an account?, Sign up", for: .normal)
+        button.attributedText(firstString: "Don't have an account?,", secondString: "Sign up")
         button.setHeight(50)
-        button.layer.cornerRadius = 10
-        button.tintColor = .black
-        button.titleLabel?.font = .boldSystemFont(ofSize: 16)
         button.addTarget(self, action: #selector(handleSignUpButton), for: .touchUpInside)
         return button
     }()
@@ -87,7 +83,7 @@ class LoginViewController: UIViewController {
     private let continueLabel: UILabel = {
         let label = UILabel()
         label.text = "or continue with Google"
-        label.tintColor = .lightGray
+        label.textColor = .lightGray
         label.font = .systemFont(ofSize: 14)
         return label
     }()
@@ -96,7 +92,7 @@ class LoginViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Google", for: .normal)
         button.setDimensions(height: 50, width: 150)
-        button.layer.cornerRadius = 10
+        button.layer.cornerRadius = 20
         button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         button.tintColor = .black
         button.titleLabel?.font = .boldSystemFont(ofSize: 18)
@@ -111,6 +107,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        configureForTextField()
     }
     
     
@@ -147,6 +144,11 @@ class LoginViewController: UIViewController {
         
     }
     
+    private func configureForTextField(){
+        emailTextField.addTarget(self, action: #selector(handleTextChanged(sender:)), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(handleTextChanged(sender:)), for: .editingChanged)
+    }
+    
     @objc func handleLoginVC(){
         print("Login succesful!")
     }
@@ -158,5 +160,16 @@ class LoginViewController: UIViewController {
     }
     @objc func handleGoogleSignIn(){
         print("Google sign in!")
+    }
+    @objc func handleTextChanged(sender: UITextField){
+        sender == emailTextField ? (viewModel.email = sender.text) : (viewModel.password = sender.text)
+        updateForm()
+    }
+    
+    private func updateForm(){
+        loginButton.isEnabled = viewModel.formIsValid
+        loginButton.backgroundColor = viewModel.backgroudColor
+        loginButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
+        
     }
 }
