@@ -19,7 +19,7 @@ class CustomTextField: UITextField {
         borderStyle = .none
         textColor = .black
         keyboardAppearance = .light
-        backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        backgroundColor = #colorLiteral(red: 0.9341318189, green: 0.9341318189, blue: 0.9341318189, alpha: 1)
         clearButtonMode = .whileEditing
         layer.cornerRadius = 5
         setHeight(50)

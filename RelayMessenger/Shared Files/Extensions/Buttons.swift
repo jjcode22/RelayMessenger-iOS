@@ -19,6 +19,16 @@ extension UIButton{
         
         setAttributedTitle(attributedTitle, for: .normal)
         
+    }
+    
+    func primaryButton(buttonText: String){
+        setTitle("Login", for: .normal)
+        setHeight(50)
+        layer.cornerRadius = 10
+        backgroundColor = #colorLiteral(red: 0, green: 0.0745, blue: 0.5176, alpha: 1).withAlphaComponent(0.5)
+        isEnabled = false
+        tintColor = .white
+        titleLabel?.font = .boldSystemFont(ofSize: 18)
         
     }
 }

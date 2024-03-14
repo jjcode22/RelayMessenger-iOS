@@ -12,22 +12,9 @@ import UIKit
 class LoginViewController: UIViewController {
     //MARK: - Properties
     var viewModel = LoginViewModel()
-    private let welcomeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "RelayMessenger💬"
-        label.font = .boldSystemFont(ofSize: 24)
-        label.textColor = #colorLiteral(red: 0, green: 0.0745, blue: 0.5176, alpha: 1)
-        label.tintColor = .black
-        return label
-    }()
+    private let welcomeLabel: UILabel = CustomLabel(text: "RelayMessenger💬", textFont: .boldSystemFont(ofSize: 24), labelColor: UIColor(red: 0, green: 0.0745, blue: 0.5176, alpha: 1))
     
-    private let profileImageView: UIImageView = {
-        let iv = UIImageView()
-        iv.image = #imageLiteral(resourceName: "profile")
-        iv.contentMode = .scaleAspectFit
-        iv.setDimensions(height: 50, width: 50)
-        return iv
-    }()
+    private let profileImageView: UIImageView = CustomImageView(image: #imageLiteral(resourceName: "profile"), width: 50,height: 50)
     
     
     private let emailTextField = CustomTextField(placeholder: "Email", keyboardType: .emailAddress)
@@ -35,13 +22,7 @@ class LoginViewController: UIViewController {
     
     private lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Login", for: .normal)
-        button.setHeight(50)
-        button.layer.cornerRadius = 10
-        button.backgroundColor = #colorLiteral(red: 0, green: 0.0745, blue: 0.5176, alpha: 1).withAlphaComponent(0.5)
-        button.isEnabled = false
-        button.tintColor = .white
-        button.titleLabel?.font = .boldSystemFont(ofSize: 18)
+        button.primaryButton(buttonText: "Login")
         button.addTarget(self, action: #selector(handleLoginVC), for: .touchUpInside)
         return button
     }()
@@ -62,13 +43,7 @@ class LoginViewController: UIViewController {
         return button
     }()
     
-    private let continueLabel: UILabel = {
-        let label = UILabel()
-        label.text = "or continue with Google"
-        label.textColor = .lightGray
-        label.font = .systemFont(ofSize: 14)
-        return label
-    }()
+    private let continueLabel: UILabel = CustomLabel(text: "or continue with Google" ,labelColor: .lightGray)
     
     private lazy var googleButton: UIButton = {
         let button = UIButton(type: .system)
