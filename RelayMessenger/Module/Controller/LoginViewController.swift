@@ -151,7 +151,7 @@ class LoginViewController: UIViewController {
     
     private func updateForm(){
         loginButton.isEnabled = viewModel.formIsValid
-        loginButton.backgroundColor = viewModel.backgroudColor
+        loginButton.backgroundColor = viewModel.backgroundColor
         loginButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
         
     }

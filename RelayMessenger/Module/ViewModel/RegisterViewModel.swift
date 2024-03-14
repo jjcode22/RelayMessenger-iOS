@@ -18,7 +18,7 @@ struct RegisterViewModel: AuthLoginModel {
         return email?.isEmpty == false && password?.isEmpty == false && fullname?.isEmpty == false && password?.isEmpty == false
     }
     
-    var backgroudColor: UIColor{
+    var backgroundColor: UIColor{
         return formIsValid ? #colorLiteral(red: 0, green: 0.0745, blue: 0.5176, alpha: 1) : #colorLiteral(red: 0, green: 0.0745, blue: 0.5176, alpha: 1).withAlphaComponent(0.5)
     }
     

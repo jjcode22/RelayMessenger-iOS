@@ -89,7 +89,10 @@ class RegisterViewController: UIViewController {
     }
     
     @objc func handleAddPhotoButton(){
-        print("Adding photo...")
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true, completion: nil)
     }
     
     @objc func handleSignUp(){
@@ -113,12 +116,22 @@ class RegisterViewController: UIViewController {
     }
     
     func updateForm(){
-        signUpButton.isEnabled = true
-        signUpButton.backgroundColor = viewModel.backgroudColor
+        signUpButton.isEnabled = viewModel.formIsValid
+        signUpButton.backgroundColor = viewModel.backgroundColor
         signUpButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
     }
-    
-    
-    
-    
+}
+
+//MARK: - UIImagePicker Delegate methods
+
+extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let selectedImage = info[.editedImage] as? UIImage else {return}
+        addPhotoButton.layer.cornerRadius = addPhotoButton.frame.width / 2
+        addPhotoButton.layer.masksToBounds = true
+        addPhotoButton.layer.borderColor = UIColor.black.cgColor
+        addPhotoButton.layer.borderWidth = 2
+        addPhotoButton.setImage(selectedImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        dismiss(animated: true, completion: nil)
+    }
 }
