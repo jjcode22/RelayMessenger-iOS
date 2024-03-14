@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
         let label = UILabel()
         label.text = "RelayMessenger💬"
         label.font = .boldSystemFont(ofSize: 24)
-        label.textColor = #colorLiteral(red: 0.0824, green: 0, blue: 0.2784, alpha: 1)
+        label.textColor = #colorLiteral(red: 0, green: 0.0745, blue: 0.5176, alpha: 1)
         label.tintColor = .black
         return label
     }()
@@ -26,6 +26,82 @@ class LoginViewController: UIViewController {
         iv.contentMode = .scaleAspectFit
         iv.setDimensions(height: 50, width: 50)
         return iv
+    }()
+    
+    private let emailTextField: UITextField = {
+        let tf = UITextField()
+        tf.setHeight(50)
+        tf.tintColor = .black
+        tf.placeholder = "Email"
+        tf.backgroundColor = .lightGray
+        tf.keyboardType = .emailAddress
+        tf.layer.cornerRadius = 5
+        return tf
+    }()
+    
+    private let passwordTextField: UITextField = {
+        let tf = UITextField()
+        tf.setHeight(50)
+        tf.tintColor = .black
+        tf.placeholder = "Password"
+        tf.backgroundColor = .lightGray
+        tf.isSecureTextEntry = true
+        tf.layer.cornerRadius = 5
+        return tf
+    }()
+    
+    private lazy var loginButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Login", for: .normal)
+        button.setHeight(50)
+        button.layer.cornerRadius = 10
+        button.backgroundColor = #colorLiteral(red: 0, green: 0.0745, blue: 0.5176, alpha: 1)
+        button.tintColor = .white
+        button.titleLabel?.font = .boldSystemFont(ofSize: 18)
+        button.addTarget(self, action: #selector(handleLoginVC), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var forgetPasswordButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Forgot your password? Get help signing in", for: .normal)
+        button.setHeight(50)
+        button.layer.cornerRadius = 10
+        button.tintColor = .black
+        button.titleLabel?.font = .boldSystemFont(ofSize: 18)
+        button.addTarget(self, action: #selector(handleForgetPassword), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var signUpButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Don't have an account?, Sign up", for: .normal)
+        button.setHeight(50)
+        button.layer.cornerRadius = 10
+        button.tintColor = .black
+        button.titleLabel?.font = .boldSystemFont(ofSize: 16)
+        button.addTarget(self, action: #selector(handleSignUpButton), for: .touchUpInside)
+        return button
+    }()
+    
+    private let continueLabel: UILabel = {
+        let label = UILabel()
+        label.text = "or continue with Google"
+        label.tintColor = .lightGray
+        label.font = .systemFont(ofSize: 14)
+        return label
+    }()
+    
+    private lazy var googleButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Google", for: .normal)
+        button.setDimensions(height: 50, width: 150)
+        button.layer.cornerRadius = 10
+        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        button.tintColor = .black
+        button.titleLabel?.font = .boldSystemFont(ofSize: 18)
+        button.addTarget(self, action: #selector(handleGoogleSignIn), for: .touchUpInside)
+        return button
     }()
     
     
@@ -51,5 +127,36 @@ class LoginViewController: UIViewController {
         view.addSubview(profileImageView)
         profileImageView.anchor(top: welcomeLabel .bottomAnchor, paddingTop: 20)
         profileImageView.centerX(inView: view)
+        
+        let stackView = UIStackView(arrangedSubviews: [emailTextField,passwordTextField,loginButton,forgetPasswordButton])
+        stackView.axis = .vertical
+        stackView.spacing = 20
+        
+        view.addSubview(stackView)
+        stackView.anchor(top: profileImageView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 30, paddingLeft: 30,paddingRight: 30)
+        
+        view.addSubview(signUpButton)
+        signUpButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
+        signUpButton.centerX(inView: view)
+        
+        view.addSubview(continueLabel)
+        continueLabel.centerX(inView: view, topAnchor: forgetPasswordButton.bottomAnchor, paddingTop: 30)
+        
+        view.addSubview(googleButton)
+        googleButton.centerX(inView: view, topAnchor: continueLabel.bottomAnchor, paddingTop: 12)
+        
+    }
+    
+    @objc func handleLoginVC(){
+        print("Login succesful!")
+    }
+    @objc func handleForgetPassword(){
+        print("reset password link sent!")
+    }
+    @objc func handleSignUpButton(){
+        print("Registering!")
+    }
+    @objc func handleGoogleSignIn(){
+        print("Google sign in!")
     }
 }
