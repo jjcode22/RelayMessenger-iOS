@@ -29,27 +29,9 @@ class LoginViewController: UIViewController {
         return iv
     }()
     
-    private let emailTextField: UITextField = {
-        let tf = UITextField()
-        tf.setHeight(50)
-        tf.tintColor = .black
-        tf.placeholder = "Email"
-        tf.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        tf.keyboardType = .emailAddress
-        tf.layer.cornerRadius = 5
-        return tf
-    }()
     
-    private let passwordTextField: UITextField = {
-        let tf = UITextField()
-        tf.setHeight(50)
-        tf.tintColor = .black
-        tf.placeholder = "Password"
-        tf.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        tf.isSecureTextEntry = true
-        tf.layer.cornerRadius = 5
-        return tf
-    }()
+    private let emailTextField = CustomTextField(placeholder: "Email", keyboardType: .emailAddress)
+    private let passwordTextField = CustomTextField(placeholder: "Password", isSecureText: true)
     
     private lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
@@ -156,7 +138,8 @@ class LoginViewController: UIViewController {
         print("reset password link sent!")
     }
     @objc func handleSignUpButton(){
-        print("Registering!")
+        let controller = RegisterViewController()
+        navigationController?.pushViewController(controller, animated: true)
     }
     @objc func handleGoogleSignIn(){
         print("Google sign in!")
