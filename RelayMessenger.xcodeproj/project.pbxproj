@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A2AE59D9A047D9CEE0D57DD /* Pods_RelayMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C7897753CC53710ADEC9CB /* Pods_RelayMessenger.framework */; };
 		283693F72BA1C78A001D417E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283693F62BA1C78A001D417E /* AppDelegate.swift */; };
 		283693F92BA1C78A001D417E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283693F82BA1C78A001D417E /* SceneDelegate.swift */; };
 		283693FB2BA1C78A001D417E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283693FA2BA1C78A001D417E /* ViewController.swift */; };
@@ -23,6 +24,10 @@
 		283694232BA2F4C3001D417E /* AuthLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283694222BA2F4C3001D417E /* AuthLoginModel.swift */; };
 		283694252BA2FCE3001D417E /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283694242BA2FCE3001D417E /* CustomLabel.swift */; };
 		283694272BA2FF11001D417E /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283694262BA2FF11001D417E /* CustomImageView.swift */; };
+		28BD0E3E2BA330CB005B1743 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28BD0E3D2BA330CB005B1743 /* GoogleService-Info.plist */; };
+		28BD0E402BA33134005B1743 /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BD0E3F2BA33134005B1743 /* AuthServices.swift */; };
+		28BD0E432BA336A3005B1743 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BD0E422BA336A3005B1743 /* Constants.swift */; };
+		28BD0E452BA3385D005B1743 /* FileUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BD0E442BA3385D005B1743 /* FileUploader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +49,13 @@
 		283694222BA2F4C3001D417E /* AuthLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLoginModel.swift; sourceTree = "<group>"; };
 		283694242BA2FCE3001D417E /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		283694262BA2FF11001D417E /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		28BD0E3D2BA330CB005B1743 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		28BD0E3F2BA33134005B1743 /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
+		28BD0E422BA336A3005B1743 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		28BD0E442BA3385D005B1743 /* FileUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploader.swift; sourceTree = "<group>"; };
+		3FE5196CF644AFBA9C9EC2DA /* Pods-RelayMessenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RelayMessenger.debug.xcconfig"; path = "Target Support Files/Pods-RelayMessenger/Pods-RelayMessenger.debug.xcconfig"; sourceTree = "<group>"; };
+		60D1F793FF1F33C6DDD3066C /* Pods-RelayMessenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RelayMessenger.release.xcconfig"; path = "Target Support Files/Pods-RelayMessenger/Pods-RelayMessenger.release.xcconfig"; sourceTree = "<group>"; };
+		A5C7897753CC53710ADEC9CB /* Pods_RelayMessenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RelayMessenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,17 +63,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A2AE59D9A047D9CEE0D57DD /* Pods_RelayMessenger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02C361F28E086D6ED168DD65 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A5C7897753CC53710ADEC9CB /* Pods_RelayMessenger.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		283693EA2BA1C78A001D417E = {
 			isa = PBXGroup;
 			children = (
 				283693F52BA1C78A001D417E /* RelayMessenger */,
 				283693F42BA1C78A001D417E /* Products */,
+				CC603A3ECE3FEA53408DF1D6 /* Pods */,
+				02C361F28E086D6ED168DD65 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -93,6 +116,7 @@
 				283693FF2BA1C78D001D417E /* Assets.xcassets */,
 				283694012BA1C78D001D417E /* LaunchScreen.storyboard */,
 				283694042BA1C78D001D417E /* Info.plist */,
+				28BD0E3D2BA330CB005B1743 /* GoogleService-Info.plist */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -112,6 +136,7 @@
 		2836940C2BA1C7D4001D417E /* Shared Files */ = {
 			isa = PBXGroup;
 			children = (
+				28BD0E412BA3368E005B1743 /* Constants */,
 				2836941D2BA2E99D001D417E /* Class */,
 				283694162BA2A2FA001D417E /* Extensions */,
 			);
@@ -121,6 +146,8 @@
 		2836940D2BA1C7DD001D417E /* API */ = {
 			isa = PBXGroup;
 			children = (
+				28BD0E3F2BA33134005B1743 /* AuthServices.swift */,
+				28BD0E442BA3385D005B1743 /* FileUploader.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -177,6 +204,23 @@
 			path = Class;
 			sourceTree = "<group>";
 		};
+		28BD0E412BA3368E005B1743 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				28BD0E422BA336A3005B1743 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		CC603A3ECE3FEA53408DF1D6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3FE5196CF644AFBA9C9EC2DA /* Pods-RelayMessenger.debug.xcconfig */,
+				60D1F793FF1F33C6DDD3066C /* Pods-RelayMessenger.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -184,9 +228,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 283694072BA1C78D001D417E /* Build configuration list for PBXNativeTarget "RelayMessenger" */;
 			buildPhases = (
+				F2DE5189028270A169A512C2 /* [CP] Check Pods Manifest.lock */,
 				283693EF2BA1C78A001D417E /* Sources */,
 				283693F02BA1C78A001D417E /* Frameworks */,
 				283693F12BA1C78A001D417E /* Resources */,
+				CE5D586917FFE86A46B5FADB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -236,12 +282,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				283694032BA1C78D001D417E /* LaunchScreen.storyboard in Resources */,
+				28BD0E3E2BA330CB005B1743 /* GoogleService-Info.plist in Resources */,
 				283694002BA1C78D001D417E /* Assets.xcassets in Resources */,
 				283693FE2BA1C78A001D417E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CE5D586917FFE86A46B5FADB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RelayMessenger/Pods-RelayMessenger-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RelayMessenger/Pods-RelayMessenger-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RelayMessenger/Pods-RelayMessenger-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F2DE5189028270A169A512C2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RelayMessenger-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		283693EF2BA1C78A001D417E /* Sources */ = {
@@ -253,10 +342,13 @@
 				283694132BA1CE9E001D417E /* LoginViewController.swift in Sources */,
 				283694152BA1D017001D417E /* RegisterViewController.swift in Sources */,
 				283694232BA2F4C3001D417E /* AuthLoginModel.swift in Sources */,
+				28BD0E432BA336A3005B1743 /* Constants.swift in Sources */,
 				283694182BA2A341001D417E /* Views.swift in Sources */,
 				2836941C2BA2C0C8001D417E /* LoginViewModel.swift in Sources */,
 				283694252BA2FCE3001D417E /* CustomLabel.swift in Sources */,
+				28BD0E452BA3385D005B1743 /* FileUploader.swift in Sources */,
 				283693FB2BA1C78A001D417E /* ViewController.swift in Sources */,
+				28BD0E402BA33134005B1743 /* AuthServices.swift in Sources */,
 				283693F72BA1C78A001D417E /* AppDelegate.swift in Sources */,
 				283693F92BA1C78A001D417E /* SceneDelegate.swift in Sources */,
 				2836941F2BA2E9AD001D417E /* CustomTextField.swift in Sources */,
@@ -407,12 +499,14 @@
 		};
 		283694082BA1C78D001D417E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3FE5196CF644AFBA9C9EC2DA /* Pods-RelayMessenger.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W67H4LNHQ4;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RelayMessenger/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -435,12 +529,14 @@
 		};
 		283694092BA1C78D001D417E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60D1F793FF1F33C6DDD3066C /* Pods-RelayMessenger.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W67H4LNHQ4;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RelayMessenger/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

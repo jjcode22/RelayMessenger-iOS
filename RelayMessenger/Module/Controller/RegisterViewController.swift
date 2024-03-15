@@ -39,6 +39,8 @@ class RegisterViewController: UIViewController {
         return button
     }()
     
+    private let profileImage: UIImage?
+    
     
     
     //MARK: - Lifecycle
@@ -90,8 +92,16 @@ class RegisterViewController: UIViewController {
     }
     
     @objc func handleSignUp(){
-        print("Signing up")
+        guard let email = emailTextField.text else {return}
+        guard let password = passwordTextField.text else {return}
+        guard let username = usernameTextField.text else {return}
+        guard let fullname = fullNameTextField.text else {return}
+        guard let profileImage = profileImage else {return}
+        
+        let credential = AuthCredential(email: email, password: password, username: username, fullname: fullname, image: profileImage)
+        
     }
+
     
     @objc func handleTextChanged(sender: UITextField){
         switch sender {
@@ -121,6 +131,7 @@ class RegisterViewController: UIViewController {
 extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[.editedImage] as? UIImage else {return}
+        self.profileImage = selectedImage
         addPhotoButton.layer.cornerRadius = addPhotoButton.frame.width / 2
         addPhotoButton.layer.masksToBounds = true
         addPhotoButton.layer.borderColor = UIColor.black.cgColor
