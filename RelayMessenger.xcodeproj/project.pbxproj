@@ -24,6 +24,7 @@
 		283694232BA2F4C3001D417E /* AuthLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283694222BA2F4C3001D417E /* AuthLoginModel.swift */; };
 		283694252BA2FCE3001D417E /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283694242BA2FCE3001D417E /* CustomLabel.swift */; };
 		283694272BA2FF11001D417E /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283694262BA2FF11001D417E /* CustomImageView.swift */; };
+		289EC2C02BAC161B001D8CB7 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289EC2BF2BAC161B001D8CB7 /* ConversationViewController.swift */; };
 		28BD0E3E2BA330CB005B1743 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28BD0E3D2BA330CB005B1743 /* GoogleService-Info.plist */; };
 		28BD0E402BA33134005B1743 /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BD0E3F2BA33134005B1743 /* AuthServices.swift */; };
 		28BD0E432BA336A3005B1743 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BD0E422BA336A3005B1743 /* Constants.swift */; };
@@ -49,6 +50,7 @@
 		283694222BA2F4C3001D417E /* AuthLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLoginModel.swift; sourceTree = "<group>"; };
 		283694242BA2FCE3001D417E /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		283694262BA2FF11001D417E /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		289EC2BF2BAC161B001D8CB7 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		28BD0E3D2BA330CB005B1743 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		28BD0E3F2BA33134005B1743 /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
 		28BD0E422BA336A3005B1743 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 		2836940E2BA1C7E4001D417E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				289EC2BE2BAC160A001D8CB7 /* Chat */,
 				283694122BA1CE9E001D417E /* LoginViewController.swift */,
 				283694142BA1D017001D417E /* RegisterViewController.swift */,
 			);
@@ -202,6 +205,14 @@
 				283694262BA2FF11001D417E /* CustomImageView.swift */,
 			);
 			path = Class;
+			sourceTree = "<group>";
+		};
+		289EC2BE2BAC160A001D8CB7 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				289EC2BF2BAC161B001D8CB7 /* ConversationViewController.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		28BD0E412BA3368E005B1743 /* Constants */ = {
@@ -347,6 +358,7 @@
 				2836941C2BA2C0C8001D417E /* LoginViewModel.swift in Sources */,
 				283694252BA2FCE3001D417E /* CustomLabel.swift in Sources */,
 				28BD0E452BA3385D005B1743 /* FileUploader.swift in Sources */,
+				289EC2C02BAC161B001D8CB7 /* ConversationViewController.swift in Sources */,
 				283693FB2BA1C78A001D417E /* ViewController.swift in Sources */,
 				28BD0E402BA33134005B1743 /* AuthServices.swift in Sources */,
 				283693F72BA1C78A001D417E /* AppDelegate.swift in Sources */,

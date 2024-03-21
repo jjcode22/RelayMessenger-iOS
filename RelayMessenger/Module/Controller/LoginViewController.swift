@@ -107,7 +107,21 @@ class LoginViewController: UIViewController {
     }
     
     @objc func handleLoginVC(){
-        print("Login succesful!")
+        guard let email = emailTextField.text?.lowercased() else {return}
+        guard let password = passwordTextField.text else {return}
+        
+        AuthServices.loginUser(withEmail: email, withPassword: password) { result, error in
+            if let error = error{
+                print("Error: \(error.localizedDescription)")
+                return
+            }
+            print("Succesful login...")
+            
+            let controller = ConversationViewController()
+            let nav = UINavigationController(rootViewController: controller)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true, completion: nil)
+        }
     }
     @objc func handleForgetPassword(){
         print("reset password link sent!")
