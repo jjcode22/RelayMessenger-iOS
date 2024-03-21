@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
     //MARK: - Properties
@@ -147,10 +147,16 @@ class LoginViewController: UIViewController {
     }
     
     func navToConversationVC(){
-        let controller = ConversationViewController()
-        let nav = UINavigationController(rootViewController: controller)
-        nav.modalPresentationStyle = .fullScreen
-        self.present(nav, animated: true, completion: nil)
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        showLoader(true)
+        UserServices.fetchUser(uid: uid) { user in
+            self.showLoader(false)
+            let controller = ConversationViewController(user: user)
+            let nav = UINavigationController(rootViewController: controller)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true, completion: nil)
+        }
+        
     }
 }
 
