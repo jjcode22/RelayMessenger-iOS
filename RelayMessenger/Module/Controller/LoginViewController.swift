@@ -109,18 +109,17 @@ class LoginViewController: UIViewController {
     @objc func handleLoginVC(){
         guard let email = emailTextField.text?.lowercased() else {return}
         guard let password = passwordTextField.text else {return}
-        
+        showLoader(true)
         AuthServices.loginUser(withEmail: email, withPassword: password) { result, error in
+            self.showLoader(false)
             if let error = error{
-                print("Error: \(error.localizedDescription)")
+                self.showMessage(title: "Error:", message: error.localizedDescription)
                 return
             }
+            self.showLoader(false)
             print("Succesful login...")
             
-            let controller = ConversationViewController()
-            let nav = UINavigationController(rootViewController: controller)
-            nav.modalPresentationStyle = .fullScreen
-            self.present(nav, animated: true, completion: nil)
+            self.navToConversationVC()
         }
     }
     @objc func handleForgetPassword(){
@@ -128,6 +127,7 @@ class LoginViewController: UIViewController {
     }
     @objc func handleSignUpButton(){
         let controller = RegisterViewController()
+        controller.delegate = self
         navigationController?.pushViewController(controller, animated: true)
     }
     @objc func handleGoogleSignIn(){
@@ -144,4 +144,23 @@ class LoginViewController: UIViewController {
         loginButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
         
     }
+    
+    private func navToConversationVC(){
+        let controller = ConversationViewController()
+        let nav = UINavigationController(rootViewController: controller)
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true, completion: nil)
+    }
+}
+
+
+//MARK: - Register Delegate
+
+extension LoginViewController: RegisterVC_Delegate{
+    func didSuccesfullyCreateAccount(_ vc: RegisterViewController) {
+        vc.navigationController?.popViewController(animated: true)
+        navToConversationVC()
+    }
+    
+    
 }

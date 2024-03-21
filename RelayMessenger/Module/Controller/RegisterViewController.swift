@@ -8,8 +8,13 @@
 import Foundation
 import UIKit
 
+protocol RegisterVC_Delegate: AnyObject{
+    func didSuccesfullyCreateAccount(_ vc: RegisterViewController)
+}
+
 class RegisterViewController: UIViewController {
     //MARK: - Properties
+    weak var delegate: RegisterVC_Delegate?
     var viewModel = RegisterViewModel()
     private lazy var alreadyHaveAccountButton: UIButton = {
         let button = UIButton()
@@ -99,12 +104,15 @@ class RegisterViewController: UIViewController {
         guard let profileImage = profileImage else {return}
         
         let credential = AuthCredential(email: email, password: password, username: username, fullname: fullname, image: profileImage)
+        showLoader(true)
         AuthServices.registerUser(credential: credential) { error in
+            self.showLoader(false)
             if let error = error{
-                print("Error creating user: \(error)")
+                self.showMessage(title: "Error:", message: error.localizedDescription)
                 return
             }
         }
+        delegate?.didSuccesfullyCreateAccount(self)
     }
 
     

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "D2212F47-8CDB-434C-8046-B2A4F37B7650"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BC3410E3-AC74-40D2-A7D4-3F49850EABDD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RelayMessenger/Module/Controller/RegisterViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "RegisterVC_Delegate"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  uuid = "BC3410E3-AC74-40D2-A7D4-3F49850EABDD - a9a16e5bca562421"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RelayMessenger.RegisterViewController.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; RelayMessenger.RegisterViewController"
+                  moduleName = "RelayMessenger"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jj/Desktop/RelayMessenger/RelayMessenger/Module/Controller/RegisterViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "31">
+               </Location>
+               <Location
+                  uuid = "BC3410E3-AC74-40D2-A7D4-3F49850EABDD - fa3f7b89a5c06982"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RelayMessenger.RegisterViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; RelayMessenger.RegisterViewController"
+                  moduleName = "RelayMessenger"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jj/Desktop/RelayMessenger/RelayMessenger/Module/Controller/RegisterViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "201">
+               </Location>
+               <Location
+                  uuid = "BC3410E3-AC74-40D2-A7D4-3F49850EABDD - 74c473b90bb8deb3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RelayMessenger.RegisterViewController.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;RelayMessenger.RegisterViewController&gt;"
+                  moduleName = "RelayMessenger"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jj/Desktop/RelayMessenger/RelayMessenger/Module/Controller/RegisterViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  uuid = "BC3410E3-AC74-40D2-A7D4-3F49850EABDD - d0a3aaf20e8d70f3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RelayMessenger.RegisterViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;RelayMessenger.RegisterViewController&gt;"
+                  moduleName = "RelayMessenger"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jj/Desktop/RelayMessenger/RelayMessenger/Module/Controller/RegisterViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "149">
+               </Location>
+               <Location
+                  uuid = "BC3410E3-AC74-40D2-A7D4-3F49850EABDD - be0f901bb3a30a01"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RelayMessenger.RegisterViewController.__deallocating_deinit"
+                  moduleName = "RelayMessenger"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jj/Desktop/RelayMessenger/RelayMessenger/Module/Controller/RegisterViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
