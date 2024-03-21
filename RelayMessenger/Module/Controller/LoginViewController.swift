@@ -131,7 +131,8 @@ class LoginViewController: UIViewController {
         navigationController?.pushViewController(controller, animated: true)
     }
     @objc func handleGoogleSignIn(){
-        print("Google sign in!")
+        showLoader(true)
+        setupGoogle()
     }
     @objc func handleTextChanged(sender: UITextField){
         sender == emailTextField ? (viewModel.email = sender.text) : (viewModel.password = sender.text)
@@ -145,7 +146,7 @@ class LoginViewController: UIViewController {
         
     }
     
-    private func navToConversationVC(){
+    func navToConversationVC(){
         let controller = ConversationViewController()
         let nav = UINavigationController(rootViewController: controller)
         nav.modalPresentationStyle = .fullScreen
