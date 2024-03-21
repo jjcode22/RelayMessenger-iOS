@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import FirebaseFirestore
+import FirebaseAuth
 
 struct AuthCredential {
     let email: String
@@ -22,8 +23,26 @@ struct AuthServices {
         
     }
     
-    static func registerUser(credential: AuthCredential){
-        Collection_User
+    static func registerUser(credential: AuthCredential, completion: @escaping(Error?) -> Void){
+        FileUploader.uploadImage(image: credential.image) { imageURL in
+            Auth.auth().createUser(withEmail: credential.email, password: credential.password) { result, error in
+                if let error = error{
+                    print("Error creating account \(error.localizedDescription)")
+                    return
+                }
+                guard let uid = result?.user.uid else {return}
+                
+                let data: [String: Any] = [
+                    "email": credential.email,
+                    "username": credential.username,
+                    "fullname": credential.fullname,
+                    "uid": uid,
+                    "profileImageURL": imageURL
+                    
+                ]
+                Collection_User.document(uid).setData(data, completion: completion)
+            }
+        }
         
     }
     

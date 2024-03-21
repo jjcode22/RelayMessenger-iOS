@@ -22,7 +22,7 @@ extension UIButton{
     }
     
     func primaryButton(buttonText: String){
-        setTitle("Login", for: .normal)
+        setTitle(buttonText, for: .normal)
         setHeight(50)
         layer.cornerRadius = 10
         backgroundColor = #colorLiteral(red: 0, green: 0.0745, blue: 0.5176, alpha: 1).withAlphaComponent(0.5)

@@ -39,7 +39,7 @@ class RegisterViewController: UIViewController {
         return button
     }()
     
-    private let profileImage: UIImage?
+    private var profileImage: UIImage? = nil
     
     
     
@@ -92,14 +92,19 @@ class RegisterViewController: UIViewController {
     }
     
     @objc func handleSignUp(){
-        guard let email = emailTextField.text else {return}
+        guard let email = emailTextField.text?.lowercased() else {return}
         guard let password = passwordTextField.text else {return}
-        guard let username = usernameTextField.text else {return}
+        guard let username = usernameTextField.text?.lowercased() else {return}
         guard let fullname = fullNameTextField.text else {return}
         guard let profileImage = profileImage else {return}
         
         let credential = AuthCredential(email: email, password: password, username: username, fullname: fullname, image: profileImage)
-        
+        AuthServices.registerUser(credential: credential) { error in
+            if let error = error{
+                print("Error creating user: \(error)")
+                return
+            }
+        }
     }
 
     
