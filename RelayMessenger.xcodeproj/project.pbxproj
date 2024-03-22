@@ -33,6 +33,8 @@
 		289EC2CC2BAC9DAC001D8CB7 /* NewChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289EC2CB2BAC9DAC001D8CB7 /* NewChatViewController.swift */; };
 		289EC2CE2BACA6C5001D8CB7 /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289EC2CD2BACA6C5001D8CB7 /* ConversationCell.swift */; };
 		289EC2D02BACAF85001D8CB7 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289EC2CF2BACAF85001D8CB7 /* UserCell.swift */; };
+		289EC2D22BAD3D36001D8CB7 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289EC2D12BAD3D36001D8CB7 /* ChatViewController.swift */; };
+		289EC2D42BAD4813001D8CB7 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289EC2D32BAD4813001D8CB7 /* ChatCell.swift */; };
 		28BD0E3E2BA330CB005B1743 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28BD0E3D2BA330CB005B1743 /* GoogleService-Info.plist */; };
 		28BD0E402BA33134005B1743 /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BD0E3F2BA33134005B1743 /* AuthServices.swift */; };
 		28BD0E432BA336A3005B1743 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BD0E422BA336A3005B1743 /* Constants.swift */; };
@@ -67,6 +69,8 @@
 		289EC2CB2BAC9DAC001D8CB7 /* NewChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatViewController.swift; sourceTree = "<group>"; };
 		289EC2CD2BACA6C5001D8CB7 /* ConversationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
 		289EC2CF2BACAF85001D8CB7 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		289EC2D12BAD3D36001D8CB7 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		289EC2D32BAD4813001D8CB7 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		28BD0E3D2BA330CB005B1743 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		28BD0E3F2BA33134005B1743 /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
 		28BD0E422BA336A3005B1743 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -198,6 +202,7 @@
 			children = (
 				289EC2CD2BACA6C5001D8CB7 /* ConversationCell.swift */,
 				289EC2CF2BACAF85001D8CB7 /* UserCell.swift */,
+				289EC2D32BAD4813001D8CB7 /* ChatCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -235,6 +240,7 @@
 			children = (
 				289EC2BF2BAC161B001D8CB7 /* ConversationViewController.swift */,
 				289EC2CB2BAC9DAC001D8CB7 /* NewChatViewController.swift */,
+				289EC2D12BAD3D36001D8CB7 /* ChatViewController.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -383,6 +389,7 @@
 				28BD0E432BA336A3005B1743 /* Constants.swift in Sources */,
 				289EC2C62BAC867A001D8CB7 /* User.swift in Sources */,
 				283694182BA2A341001D417E /* Views.swift in Sources */,
+				289EC2D42BAD4813001D8CB7 /* ChatCell.swift in Sources */,
 				2836941C2BA2C0C8001D417E /* LoginViewModel.swift in Sources */,
 				283694252BA2FCE3001D417E /* CustomLabel.swift in Sources */,
 				289EC2D02BACAF85001D8CB7 /* UserCell.swift in Sources */,
@@ -394,6 +401,7 @@
 				283693F72BA1C78A001D417E /* AppDelegate.swift in Sources */,
 				283693F92BA1C78A001D417E /* SceneDelegate.swift in Sources */,
 				289EC2CE2BACA6C5001D8CB7 /* ConversationCell.swift in Sources */,
+				289EC2D22BAD3D36001D8CB7 /* ChatViewController.swift in Sources */,
 				2836941F2BA2E9AD001D417E /* CustomTextField.swift in Sources */,
 				283694272BA2FF11001D417E /* CustomImageView.swift in Sources */,
 				289EC2CA2BAC8E8A001D8CB7 /* SplashViewController.swift in Sources */,

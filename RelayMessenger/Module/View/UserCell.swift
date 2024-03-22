@@ -9,18 +9,20 @@ import UIKit
 
 class UserCell: UITableViewCell {
     //MARK: - properties
-    private var profileImageView = CustomImageView(image: #imageLiteral(resourceName: "Google_Contacts_logo copy"), width: 60, backgroundColor: .lightGray, height: 60, cornerRadius: 30)
-    private var fullname = CustomLabel(text: "user's fullname")
-    private var username = CustomLabel(text: "username")
+    private var profileImageView = CustomImageView(image: #imageLiteral(resourceName: "Google_Contacts_logo copy"), width: 48, backgroundColor: .lightGray, height: 48, cornerRadius: 24)
+    private var fullname = CustomLabel(text: "fullname", labelColor: .lightGray)
+    private var username = CustomLabel(text: "username",textFont: .boldSystemFont(ofSize: 16))
     
     
     //MARK: - lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        selectionStyle = .none
+        backgroundColor = .clear
         addSubview(profileImageView)
         profileImageView.centerY(inView: self,leftAnchor: leftAnchor)
         
-        let stackView = UIStackView(arrangedSubviews: [fullname,username])
+        let stackView = UIStackView(arrangedSubviews: [username,fullname])
         stackView.axis = .vertical
         stackView.spacing = 8
         stackView.alignment = .leading

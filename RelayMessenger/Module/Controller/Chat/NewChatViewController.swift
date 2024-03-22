@@ -32,7 +32,7 @@ class NewChatViewController: UIViewController{
     private func configureTableView(){
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 80
+        tableView.rowHeight = 64
         tableView.register(UserCell.self, forCellReuseIdentifier: reuseIdentifier)
         
     }
