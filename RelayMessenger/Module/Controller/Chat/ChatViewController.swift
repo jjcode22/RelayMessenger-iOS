@@ -15,6 +15,7 @@ class ChatViewController: UICollectionViewController {
     private lazy var customInputView: CustomInputView = {
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
         let iv = CustomInputView(frame: frame)
+        iv.delegate = self
         return iv
     }()
     
@@ -79,5 +80,17 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
         
         return .init(width: view.frame.width, height: estimatedSize.height)
     }
+    
+}
+
+//MARK: - CustomInputViewDelegate
+extension ChatViewController: CustomInputViewDelegate {
+    func inputView(_ view: CustomInputView, wantToUploadMessage message: String) {
+        print(message)
+        messages.append(message)
+        view.clearTextView()
+        collectionView.reloadData()
+    }
+    
     
 }
