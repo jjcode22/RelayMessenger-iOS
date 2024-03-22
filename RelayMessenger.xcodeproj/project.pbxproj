@@ -35,6 +35,8 @@
 		289EC2D02BACAF85001D8CB7 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289EC2CF2BACAF85001D8CB7 /* UserCell.swift */; };
 		289EC2D22BAD3D36001D8CB7 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289EC2D12BAD3D36001D8CB7 /* ChatViewController.swift */; };
 		289EC2D42BAD4813001D8CB7 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289EC2D32BAD4813001D8CB7 /* ChatCell.swift */; };
+		289EC2D62BADA494001D8CB7 /* CustomInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289EC2D52BADA494001D8CB7 /* CustomInputView.swift */; };
+		289EC2D82BADA7F2001D8CB7 /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289EC2D72BADA7F2001D8CB7 /* InputTextView.swift */; };
 		28BD0E3E2BA330CB005B1743 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28BD0E3D2BA330CB005B1743 /* GoogleService-Info.plist */; };
 		28BD0E402BA33134005B1743 /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BD0E3F2BA33134005B1743 /* AuthServices.swift */; };
 		28BD0E432BA336A3005B1743 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BD0E422BA336A3005B1743 /* Constants.swift */; };
@@ -71,6 +73,8 @@
 		289EC2CF2BACAF85001D8CB7 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		289EC2D12BAD3D36001D8CB7 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		289EC2D32BAD4813001D8CB7 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		289EC2D52BADA494001D8CB7 /* CustomInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputView.swift; sourceTree = "<group>"; };
+		289EC2D72BADA7F2001D8CB7 /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
 		28BD0E3D2BA330CB005B1743 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		28BD0E3F2BA33134005B1743 /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
 		28BD0E422BA336A3005B1743 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 				289EC2CD2BACA6C5001D8CB7 /* ConversationCell.swift */,
 				289EC2CF2BACAF85001D8CB7 /* UserCell.swift */,
 				289EC2D32BAD4813001D8CB7 /* ChatCell.swift */,
+				289EC2D52BADA494001D8CB7 /* CustomInputView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -231,6 +236,7 @@
 				2836941E2BA2E9AD001D417E /* CustomTextField.swift */,
 				283694242BA2FCE3001D417E /* CustomLabel.swift */,
 				283694262BA2FF11001D417E /* CustomImageView.swift */,
+				289EC2D72BADA7F2001D8CB7 /* InputTextView.swift */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -384,6 +390,7 @@
 				283694132BA1CE9E001D417E /* LoginViewController.swift in Sources */,
 				283694152BA1D017001D417E /* RegisterViewController.swift in Sources */,
 				283694232BA2F4C3001D417E /* AuthLoginModel.swift in Sources */,
+				289EC2D62BADA494001D8CB7 /* CustomInputView.swift in Sources */,
 				289EC2C42BAC653B001D8CB7 /* LoginGoogle.swift in Sources */,
 				289EC2CC2BAC9DAC001D8CB7 /* NewChatViewController.swift in Sources */,
 				28BD0E432BA336A3005B1743 /* Constants.swift in Sources */,
@@ -400,6 +407,7 @@
 				289EC2C82BAC8780001D8CB7 /* UserServices.swift in Sources */,
 				283693F72BA1C78A001D417E /* AppDelegate.swift in Sources */,
 				283693F92BA1C78A001D417E /* SceneDelegate.swift in Sources */,
+				289EC2D82BADA7F2001D8CB7 /* InputTextView.swift in Sources */,
 				289EC2CE2BACA6C5001D8CB7 /* ConversationCell.swift in Sources */,
 				289EC2D22BAD3D36001D8CB7 /* ChatViewController.swift in Sources */,
 				2836941F2BA2E9AD001D417E /* CustomTextField.swift in Sources */,

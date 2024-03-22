@@ -83,5 +83,9 @@ extension ConversationViewController: UITableViewDelegate, UITableViewDataSource
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = ChatViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
     
 }

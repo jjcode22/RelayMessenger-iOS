@@ -21,12 +21,15 @@ class ChatCell: UICollectionViewCell {
     
     var bubbleRightAnchor: NSLayoutConstraint!
     var bubbleLeftAnchor: NSLayoutConstraint!
+    var dateRightAnchor: NSLayoutConstraint!
+    var dateLeftAnchor: NSLayoutConstraint!
     
     private let textView: UITextView = {
         let tv = UITextView()
         tv.isEditable = false
         tv.backgroundColor = .clear
         tv.isScrollEnabled = false
+        tv.text = "Lorem Ipsum Lorem Ipsum Lorem Ipsum "
         tv.font = .systemFont(ofSize: 16)
         return tv
     }()
@@ -44,6 +47,22 @@ class ChatCell: UICollectionViewCell {
         bubbleContainer.anchor(top: topAnchor,bottom: bottomAnchor)
         //set max chat bubble width to 250
         bubbleContainer.widthAnchor.constraint(lessThanOrEqualToConstant: 250).isActive = true
+        //bubbleContainer Anchor constraints for Leftsided and Rightsided bubbles
+        bubbleLeftAnchor = bubbleContainer.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 12)
+        bubbleLeftAnchor.isActive = false
+        bubbleRightAnchor = bubbleContainer.rightAnchor.constraint(equalTo: rightAnchor, constant: -12)
+        bubbleRightAnchor.isActive = false
+        
+        bubbleContainer.addSubview(textView)
+        textView.anchor(top: bubbleContainer.topAnchor,left: bubbleContainer.leftAnchor,bottom: bubbleContainer.bottomAnchor, right: bubbleContainer.rightAnchor,paddingTop: 4,paddingLeft: 12,paddingBottom: 4,paddingRight: 12)
+        
+        addSubview(dateLabel)
+        //dateLabel Anchor constraints for Leftsided and Rightsided bubbles
+        dateLeftAnchor = dateLabel.leftAnchor.constraint(equalTo: bubbleContainer.rightAnchor, constant: 12)
+        dateLeftAnchor.isActive = false
+        dateRightAnchor = dateLabel.rightAnchor.constraint(equalTo: bubbleContainer.leftAnchor, constant: -12)
+        dateRightAnchor.isActive = false
+        dateLabel.anchor(bottom: bottomAnchor)
     }
     
     required init?(coder: NSCoder) {
@@ -51,4 +70,10 @@ class ChatCell: UICollectionViewCell {
     }
     
     //MARK: - helpers
+    func configure(text: String){
+        bubbleLeftAnchor.isActive = true
+        dateLeftAnchor.isActive = true
+        
+        textView.text = text
+    }
 }
