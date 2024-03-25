@@ -19,7 +19,13 @@ class CustomInputView: UIView{
     let inputTextView = InputTextView()
     weak var delegate: CustomInputViewDelegate?
     
-    private let postBackgroundColor = CustomImageView(width: 40, backgroundColor: #colorLiteral(red: 0, green: 0.0745, blue: 0.5176, alpha: 1), height: 40, cornerRadius: 20)
+    private let postBackgroundColor: CustomImageView = {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handlePostButton))
+        let iv = CustomImageView(width: 40, backgroundColor: #colorLiteral(red: 0, green: 0.0745, blue: 0.5176, alpha: 1), height: 40, cornerRadius: 20)
+        iv.isUserInteractionEnabled = true
+        iv.addGestureRecognizer(tap)
+        return iv
+    }()
     
     private lazy var postButton: UIButton = {
         let button = UIButton(type: .system)

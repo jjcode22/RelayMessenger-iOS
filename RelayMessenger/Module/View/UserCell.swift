@@ -9,6 +9,12 @@ import UIKit
 
 class UserCell: UITableViewCell {
     //MARK: - properties
+    
+    var viewModel: UserViewModel?{
+        didSet{
+            configure()
+        }
+    }
     private var profileImageView = CustomImageView(image: #imageLiteral(resourceName: "Google_Contacts_logo copy"), width: 48, backgroundColor: .lightGray, height: 48, cornerRadius: 24)
     private var fullname = CustomLabel(text: "fullname", labelColor: .lightGray)
     private var username = CustomLabel(text: "username",textFont: .boldSystemFont(ofSize: 16))
@@ -41,4 +47,11 @@ class UserCell: UITableViewCell {
     }
     
     //MARK: - helpers
+    private func configure(){
+        guard let viewModel = viewModel else {return}
+        self.username.text = viewModel.username
+        self.fullname.text = viewModel.fullname
+        self.profileImageView.sd_setImage(with: viewModel.profileImageURL)
+        
+    }
 }
