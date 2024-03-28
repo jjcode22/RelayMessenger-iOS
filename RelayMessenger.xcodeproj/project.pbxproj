@@ -38,11 +38,13 @@
 		289EC2D62BADA494001D8CB7 /* CustomInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289EC2D52BADA494001D8CB7 /* CustomInputView.swift */; };
 		289EC2D82BADA7F2001D8CB7 /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289EC2D72BADA7F2001D8CB7 /* InputTextView.swift */; };
 		289EC2DA2BAE258D001D8CB7 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289EC2D92BAE258D001D8CB7 /* UserViewModel.swift */; };
+		28A462DF2BB5B594009EDB74 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A462DE2BB5B594009EDB74 /* MessageViewModel.swift */; };
 		28BD0E3E2BA330CB005B1743 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28BD0E3D2BA330CB005B1743 /* GoogleService-Info.plist */; };
 		28BD0E402BA33134005B1743 /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BD0E3F2BA33134005B1743 /* AuthServices.swift */; };
 		28BD0E432BA336A3005B1743 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BD0E422BA336A3005B1743 /* Constants.swift */; };
 		28BD0E452BA3385D005B1743 /* FileUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BD0E442BA3385D005B1743 /* FileUploader.swift */; };
 		28E540D42BB1B89B0020BE40 /* MessageServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E540D32BB1B89B0020BE40 /* MessageServices.swift */; };
+		28F1FF9F2BB4BE4C00C3E20B /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F1FF9E2BB4BE4C00C3E20B /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,11 +80,13 @@
 		289EC2D52BADA494001D8CB7 /* CustomInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputView.swift; sourceTree = "<group>"; };
 		289EC2D72BADA7F2001D8CB7 /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
 		289EC2D92BAE258D001D8CB7 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		28A462DE2BB5B594009EDB74 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		28BD0E3D2BA330CB005B1743 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		28BD0E3F2BA33134005B1743 /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
 		28BD0E422BA336A3005B1743 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		28BD0E442BA3385D005B1743 /* FileUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploader.swift; sourceTree = "<group>"; };
 		28E540D32BB1B89B0020BE40 /* MessageServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageServices.swift; sourceTree = "<group>"; };
+		28F1FF9E2BB4BE4C00C3E20B /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		3FE5196CF644AFBA9C9EC2DA /* Pods-RelayMessenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RelayMessenger.debug.xcconfig"; path = "Target Support Files/Pods-RelayMessenger/Pods-RelayMessenger.debug.xcconfig"; sourceTree = "<group>"; };
 		60D1F793FF1F33C6DDD3066C /* Pods-RelayMessenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RelayMessenger.release.xcconfig"; path = "Target Support Files/Pods-RelayMessenger/Pods-RelayMessenger.release.xcconfig"; sourceTree = "<group>"; };
 		A5C7897753CC53710ADEC9CB /* Pods_RelayMessenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RelayMessenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,6 +207,7 @@
 				283694202BA2F1F6001D417E /* RegisterViewModel.swift */,
 				283694222BA2F4C3001D417E /* AuthLoginModel.swift */,
 				289EC2D92BAE258D001D8CB7 /* UserViewModel.swift */,
+				28A462DE2BB5B594009EDB74 /* MessageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				289EC2C52BAC867A001D8CB7 /* User.swift */,
+				28F1FF9E2BB4BE4C00C3E20B /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -403,6 +409,7 @@
 				28BD0E432BA336A3005B1743 /* Constants.swift in Sources */,
 				289EC2C62BAC867A001D8CB7 /* User.swift in Sources */,
 				283694182BA2A341001D417E /* Views.swift in Sources */,
+				28F1FF9F2BB4BE4C00C3E20B /* Message.swift in Sources */,
 				289EC2D42BAD4813001D8CB7 /* ChatCell.swift in Sources */,
 				289EC2DA2BAE258D001D8CB7 /* UserViewModel.swift in Sources */,
 				2836941C2BA2C0C8001D417E /* LoginViewModel.swift in Sources */,
@@ -411,6 +418,7 @@
 				28BD0E452BA3385D005B1743 /* FileUploader.swift in Sources */,
 				289EC2C02BAC161B001D8CB7 /* ConversationViewController.swift in Sources */,
 				283693FB2BA1C78A001D417E /* ViewController.swift in Sources */,
+				28A462DF2BB5B594009EDB74 /* MessageViewModel.swift in Sources */,
 				28BD0E402BA33134005B1743 /* AuthServices.swift in Sources */,
 				289EC2C82BAC8780001D8CB7 /* UserServices.swift in Sources */,
 				283693F72BA1C78A001D417E /* AppDelegate.swift in Sources */,

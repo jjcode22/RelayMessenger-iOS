@@ -8,12 +8,24 @@
 import Foundation
 import FirebaseCore
 import FirebaseFirestoreInternal
+import FirebaseAuth
 
 
 struct MessageServices {
     
-    static func fetchMessages(){
+    static func fetchMessages(otherUser: User, completion: @escaping ([Message]) -> Void){
+        guard let uid = Auth.auth().currentUser?.uid else {return}
         
+        var messages = [Message]()
+        let query = Collection_Message.document(uid).collection(otherUser.uid).order(by: "timestamp", descending: false)
+        
+        query.addSnapshotListener { snapshot, _ in
+            guard let documentChanges = snapshot?.documentChanges.filter({$0.type == .added}) else {return}
+            messages.append(contentsOf: documentChanges.map({
+                Message(dictionary: $0.document.data())
+            }))
+            completion(messages)
+        }
     }
     
     static func fetchRecentMessages(){

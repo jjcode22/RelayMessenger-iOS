@@ -47,3 +47,6 @@ extension UITextView{
         self.textContainerInset = UIEdgeInsets(top: 10, left: 12, bottom: 10, right: 12)
     }
 }
+
+
+
