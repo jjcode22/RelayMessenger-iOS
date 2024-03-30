@@ -14,6 +14,13 @@ class ConversationViewController: UIViewController {
     private var tableView = UITableView()
     private let reuseIdentifier = "ConversationCell"
     
+    private var conversations: [Message] = []{
+        didSet{
+            tableView.reloadData()
+        }
+    }
+    
+    private var conversationDictionary = [String: Message]()
     
     
     //MARK: - Lifecycle
@@ -29,6 +36,7 @@ class ConversationViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         configureTableView()
+        fetchConversations()
     }
     
     //MARK: - Helpers
@@ -43,6 +51,16 @@ class ConversationViewController: UIViewController {
         
         view.addSubview(tableView)
         tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor,left: view.leftAnchor,bottom: view.safeAreaLayoutGuide.bottomAnchor,right: view.rightAnchor,paddingLeft: 15,paddingRight: 15 )
+    }
+    
+    private func fetchConversations(){
+        MessageServices.fetchRecentMessages { conversations in
+            conversations.forEach { conversation in
+                self.conversationDictionary[conversation.chatPartnerID] = conversation
+            }
+            self.conversations = Array(self.conversationDictionary.values)
+        }
+        
     }
     
     private func configureTableView(){
@@ -81,15 +99,23 @@ class ConversationViewController: UIViewController {
 
 extension ConversationViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return conversations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ConversationCell
+        let conversation = conversations[indexPath.row]
+        cell.viewModel = MessageViewModel(message: conversation)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let conversation = conversations[indexPath.row]
+        showLoader(true)
+        UserServices.fetchUser(uid: conversation.chatPartnerID) { [self] otherUser in
+            showLoader(false)
+            openChat(currentUser: user, otherUser: otherUser)
+        }
         
     }
     

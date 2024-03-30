@@ -32,6 +32,14 @@ struct MessageViewModel {
     var profileImageURL: URL? {
         return URL(string: message.profileImage)
     }
+    
+    var fullname: String {
+        return message.fullname
+    }
+    
+    var username: String{
+        return message.username
+    }
     var timestamp: String? {
         let date = message.timestamp.dateValue()
         let dateFormatter = DateFormatter()

@@ -17,7 +17,7 @@ struct MessageServices {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         
         var messages = [Message]()
-        let query = Collection_Message.document(uid).collection(otherUser.uid).order(by: "timestamp", descending: false)
+        let query = Collection_Message.document(uid).collection(otherUser.uid).order(by: "timestamp")
         
         query.addSnapshotListener { snapshot, _ in
             guard let documentChanges = snapshot?.documentChanges.filter({$0.type == .added}) else {return}
@@ -28,7 +28,16 @@ struct MessageServices {
         }
     }
     
-    static func fetchRecentMessages(){
+    static func fetchRecentMessages(completion: @escaping([Message]) -> Void){
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        
+        let query = Collection_Message.document(uid).collection("recent-message").order(by: "timestamp")
+        
+        query.addSnapshotListener { snapshot, _ in
+            guard let documentChanges = snapshot?.documentChanges else {return}
+            let messages = documentChanges.map({Message(dictionary: $0.document.data())})
+            completion(messages)
+        }
         
     }
     

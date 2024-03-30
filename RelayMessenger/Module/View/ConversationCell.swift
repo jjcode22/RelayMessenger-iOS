@@ -9,6 +9,12 @@ import UIKit
 
 class ConversationCell: UITableViewCell {
     //MARK: - Properties
+    var viewModel: MessageViewModel?{
+        didSet{
+            configure()
+        }
+    }
+    
     private let profileImageView = CustomImageView(image: #imageLiteral(resourceName: "Google_Contacts_logo copy"),width: 60,backgroundColor: .lightGray, height: 60, cornerRadius: 30)
     
     
@@ -43,4 +49,14 @@ class ConversationCell: UITableViewCell {
     }
     
     //MARK: - Helpers
+    
+    private func configure(){
+        guard let viewModel = viewModel else {return}
+        
+        self.profileImageView.sd_setImage(with: viewModel.profileImageURL)
+        self.fullname.text = viewModel.fullname
+        self.dateLabel.text = viewModel.timestamp
+        self.recentMessage.text = viewModel.messageText
+        
+    }
 }
