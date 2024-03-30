@@ -41,7 +41,7 @@ struct MessageServices {
         
     }
     
-    static func uploadMessage(message: String,currentUser: User,otherUser: User, completion:  ((Error?) -> Void)?){
+    static func uploadMessage(message: String,currentUser: User,otherUser: User,unReadCount: Int, completion:  ((Error?) -> Void)?){
         //what currentUser will see
         let dataFrom: [String: Any] = [
             "text": message,
@@ -51,7 +51,9 @@ struct MessageServices {
             
             "username": otherUser.username,
             "fullname": otherUser.fullname,
-            "profileImage": otherUser.profileImage
+            "profileImage": otherUser.profileImage,
+            
+            "newMsgCount": 0
         ]
         //What otherUser will see
         let dataTo: [String: Any] = [
@@ -62,7 +64,9 @@ struct MessageServices {
             
             "username": currentUser.username,
             "fullname": currentUser.fullname,
-            "profileImage": currentUser.profileImage
+            "profileImage": currentUser.profileImage,
+            
+            "newMsgCount": unReadCount
         ]
         
         Collection_Message.document(currentUser.uid).collection(otherUser.uid).addDocument(data: dataFrom) { _ in
@@ -70,5 +74,29 @@ struct MessageServices {
             Collection_Message.document(currentUser.uid).collection("recent-message").document(otherUser.uid).setData(dataFrom)
             Collection_Message.document(otherUser.uid).collection("recent-message").document(currentUser.uid).setData(dataTo)
         }
+    }
+    
+    static func fetchSingleRecentMessage(otherUser: User,completion: @escaping (Int) -> Void){
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        //get recent message count data
+        Collection_Message.document(otherUser.uid).collection("recent-message").document(uid).getDocument { snapshot, _ in
+            guard let data = snapshot?.data() else {
+                completion(0)
+                return}
+            
+            let message = Message(dictionary: data)
+            completion(message.newMsgCount)
+        }
+    }
+    
+    static func markAllMessagesAsRead(otherUser: User){
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        
+        let updatedData: [String: Any] = [
+            "newMsgCount": 0
+        ]
+        
+        Collection_Message.document(uid).collection("recent-message").document(otherUser.uid).updateData(updatedData)
+        
     }
 }

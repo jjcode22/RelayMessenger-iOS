@@ -24,12 +24,22 @@ class ConversationViewController: UIViewController {
         label.setDimensions(height: 40, width: 40)
         label.layer.cornerRadius = 20
         label.clipsToBounds = true
+        label.isHidden = true
         return label
     }()
     
     private var conversations: [Message] = []{
         didSet{
             tableView.reloadData()
+        }
+    }
+    
+    private var unReadCount: Int = 0 {
+        didSet{
+            DispatchQueue.main.async {
+                self.unReadMsgLabel.isHidden = self.unReadCount == 0
+            }
+            
         }
     }
     
@@ -70,13 +80,19 @@ class ConversationViewController: UIViewController {
     }
     
     private func fetchConversations(){
-        MessageServices.fetchRecentMessages { conversations in
+        MessageServices.fetchRecentMessages { [self] conversations in
             conversations.forEach { conversation in
                 self.conversationDictionary[conversation.chatPartnerID] = conversation
             }
             self.conversations = Array(self.conversationDictionary.values)
+            unReadCount = 0
+            self.conversations.forEach { message in
+                unReadCount = unReadCount + message.newMsgCount
+            }
+            unReadMsgLabel.text = "\(unReadCount)"
+            let center = UNUserNotificationCenter.current()
+            center.setBadgeCount(unReadCount)
         }
-        
     }
     
     private func configureTableView(){

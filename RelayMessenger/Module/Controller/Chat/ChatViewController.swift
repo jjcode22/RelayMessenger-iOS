@@ -37,6 +37,15 @@ class ChatViewController: UICollectionViewController {
         super.viewDidLoad()
         configureUI()
         fetchMessages()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+            self.markAllMessagesAsRead()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        markAllMessagesAsRead()
     }
     
     override var inputAccessoryView: UIView?{
@@ -61,6 +70,11 @@ class ChatViewController: UICollectionViewController {
             print(messages)
             self.collectionView.reloadData()
         }
+    }
+    
+    private func markAllMessagesAsRead(){
+        MessageServices.markAllMessagesAsRead(otherUser: otherUser)
+        
     }
 }
 
@@ -101,12 +115,15 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
 //MARK: - CustomInputViewDelegate
 extension ChatViewController: CustomInputViewDelegate {
     func inputView(_ view: CustomInputView, wantToUploadMessage message: String) {
-        print(message)
-        MessageServices.uploadMessage(message: message, currentUser: currentUser, otherUser: otherUser) { _ in
-            print("message sent")
+        MessageServices.fetchSingleRecentMessage(otherUser: otherUser) { [self] unReadCount in
+            //increment unReadCount by 1 every time a new message is uploaded in the chat
+            MessageServices.uploadMessage(message: message, currentUser: currentUser, otherUser: otherUser, unReadCount: unReadCount + 1) { _ in
+                print("message sent")
+                collectionView.reloadData()
+            }
         }
         view.clearTextView()
-        collectionView.reloadData()
+
     }
     
     

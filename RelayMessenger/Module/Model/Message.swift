@@ -24,6 +24,8 @@ struct Message {
         return isFromCurrentUser ? toID : fromID
     }
     
+    let newMsgCount: Int
+    
     init(dictionary: [String: Any]){
         self.text = dictionary["text"] as? String ?? ""
         self.toID = dictionary["toID"] as? String ?? ""
@@ -32,6 +34,7 @@ struct Message {
         self.username = dictionary["username"] as? String ?? ""
         self.fullname = dictionary["fullname"] as? String ?? ""
         self.profileImage = dictionary["profileImage"] as? String ?? ""
+        self.newMsgCount = dictionary["newMsgCount"] as? Int ?? 0
         
         self.isFromCurrentUser = fromID == Auth.auth().currentUser?.uid
     }

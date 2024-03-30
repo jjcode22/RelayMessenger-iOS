@@ -23,6 +23,10 @@ struct MessageViewModel {
         return message.isFromCurrentUser ? #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     }
     
+    var unReadCount: Int {return message.newMsgCount}
+    //Hide unread label if the count is 0 in the MessageViewModel
+    var shouldHideUnReadLabel: Bool {return message.newMsgCount == 0}
+    
     var rightAnchorActive: Bool {return message.isFromCurrentUser}
     var leftAnchorActive: Bool {return !message.isFromCurrentUser}
     var shouldHideProfileImage: Bool {
