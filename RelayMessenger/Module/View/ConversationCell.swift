@@ -17,6 +17,18 @@ class ConversationCell: UITableViewCell {
     
     private let profileImageView = CustomImageView(image: #imageLiteral(resourceName: "Google_Contacts_logo copy"),width: 60,backgroundColor: .lightGray, height: 60, cornerRadius: 30)
     
+    private let unReadMsgLabel: UILabel = {
+        let label = UILabel()
+        label.text = "7"
+        label.textColor = .white
+        label.font = .boldSystemFont(ofSize: 14)
+        label.backgroundColor = .systemBlue
+        label.textAlignment = .center
+        label.setDimensions(height: 28, width: 28)
+        label.layer.cornerRadius = 14
+        label.clipsToBounds = true
+        return label
+    }()
     
     private let fullname = CustomLabel(text: "Fullname")
     private let recentMessage = CustomLabel(text: "Resent message",labelColor: .lightGray)
@@ -40,8 +52,14 @@ class ConversationCell: UITableViewCell {
         addSubview(stackView)
         stackView.centerY(inView: profileImageView,leftAnchor: profileImageView.rightAnchor, paddingLeft: 15)
         
-        addSubview(dateLabel)
-        dateLabel.centerY(inView: self,rightAnchor: rightAnchor, paddingRight: 10)
+        let stackDate = UIStackView(arrangedSubviews: [dateLabel,unReadMsgLabel])
+        stackDate.axis = .vertical
+        stackDate.spacing = 8
+        stackDate.alignment = .trailing
+        
+        addSubview(stackDate)
+        stackDate.centerY(inView: profileImageView,rightAnchor: rightAnchor,paddingRight: 8)
+
     }
     
     required init?(coder: NSCoder) {

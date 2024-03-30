@@ -14,6 +14,19 @@ class ConversationViewController: UIViewController {
     private var tableView = UITableView()
     private let reuseIdentifier = "ConversationCell"
     
+    private let unReadMsgLabel: UILabel = {
+        let label = UILabel()
+        label.text = "7"
+        label.textColor = .white
+        label.font = .boldSystemFont(ofSize: 18)
+        label.backgroundColor = .systemBlue
+        label.textAlignment = .center
+        label.setDimensions(height: 40, width: 40)
+        label.layer.cornerRadius = 20
+        label.clipsToBounds = true
+        return label
+    }()
+    
     private var conversations: [Message] = []{
         didSet{
             tableView.reloadData()
@@ -51,6 +64,9 @@ class ConversationViewController: UIViewController {
         
         view.addSubview(tableView)
         tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor,left: view.leftAnchor,bottom: view.safeAreaLayoutGuide.bottomAnchor,right: view.rightAnchor,paddingLeft: 15,paddingRight: 15 )
+        
+        view.addSubview(unReadMsgLabel)
+        unReadMsgLabel.anchor(left: view.safeAreaLayoutGuide.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingLeft: 20, paddingBottom: 10)
     }
     
     private func fetchConversations(){
