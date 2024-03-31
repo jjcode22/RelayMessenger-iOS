@@ -20,6 +20,34 @@ class ChatViewController: UICollectionViewController {
         return iv
     }()
     
+    lazy var imagePicker: UIImagePickerController = {
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.delegate = self
+        return picker
+    }()
+    
+    private lazy var attachAlert: UIAlertController = {
+        let alert = UIAlertController(title: "Attach file", message: "Select the button you want to attach from", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
+            self.handleCamera()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
+            self.handleGallery()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Location", style: .default, handler: { _ in
+            print("Location")
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        
+        return alert
+        
+    }()
+    
     private var currentUser: User
     private var otherUser: User
     
@@ -99,6 +127,7 @@ class ChatViewController: UICollectionViewController {
         MessageServices.markAllMessagesAsRead(otherUser: otherUser)
         
     }
+    
 }
 
 extension ChatViewController{
@@ -158,6 +187,10 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
 
 //MARK: - CustomInputViewDelegate
 extension ChatViewController: CustomInputViewDelegate {
+    func inputViewForAttach(_ view: CustomInputView) {
+        present(attachAlert, animated: true)
+    }
+    
     func inputView(_ view: CustomInputView, wantToUploadMessage message: String) {
         MessageServices.fetchSingleRecentMessage(otherUser: otherUser) { [self] unReadCount in
             //increment unReadCount by 1 every time a new message is uploaded in the chat
