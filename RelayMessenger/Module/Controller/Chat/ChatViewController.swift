@@ -10,7 +10,8 @@ import UIKit
 class ChatViewController: UICollectionViewController {
     //MARK: - properties
     private let reuseIdentifier = "ChatCell"
-    private var messages:[Message] = []
+    private let chatHeaderIdentifer = "ChatHeader"
+    private var messages = [[Message]]()
     
     private lazy var customInputView: CustomInputView = {
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
@@ -27,6 +28,7 @@ class ChatViewController: UICollectionViewController {
         self.currentUser = currentUser
         self.otherUser = otherUser
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
+        collectionView.register(ChatHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: chatHeaderIdentifer)
     }
     
     required init?(coder: NSCoder) {
@@ -66,8 +68,22 @@ class ChatViewController: UICollectionViewController {
     
     private func fetchMessages(){
         MessageServices.fetchMessages(otherUser: otherUser) { messages in
-            self.messages = messages
-            print(messages)
+            //This dictionary method groups messages values by the keys returned in the closure - in our case it groups messages by the date timestamp of the messages in the dictionary where keys are the dates and values are arrays of messages with that date
+            let groupedMessages = Dictionary(grouping: messages) { (element) -> String in
+                let dateValue = element.timestamp.dateValue()
+                let stringDateValue = self.stringValue(forDate: dateValue)
+                return stringDateValue ?? ""
+            }
+            //remove all messages from dict to avoid duplicate messages in the chat
+            self.messages.removeAll()
+            
+            //Sort the keys i.e date timestamps of the message dict in descending order
+            let sortedKeys = groupedMessages.keys.sorted(by: {$0 < $1})
+            sortedKeys.forEach { key in
+                let values = groupedMessages[key]
+                self.messages.append(values ?? [])
+            }
+            
             self.collectionView.reloadData()
         }
     }
@@ -79,15 +95,36 @@ class ChatViewController: UICollectionViewController {
 }
 
 extension ChatViewController{
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader{
+            guard let firstMessage = messages[indexPath.section].first else {return UICollectionReusableView()}
+            
+            let dateValue = firstMessage.timestamp.dateValue()
+            let stringValue = stringValue(forDate: dateValue)
+            let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: chatHeaderIdentifer, for: indexPath) as! ChatHeader
+            cell.dateValue = stringValue
+            return cell
+        }
+        return UICollectionReusableView()
+    }
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return messages.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return messages[section].count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ChatCell
-        let message = messages[indexPath.row]
+        let message = messages[indexPath.section][indexPath.row]
         cell.viewModel = MessageViewModel(message: message)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: view.frame.width, height: 50)
     }
 }
 
@@ -100,7 +137,7 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
         let cell = ChatCell(frame: frame)
-        let message = messages[indexPath.row]
+        let message = messages[indexPath.section][indexPath.row]
         cell.viewModel = MessageViewModel(message: message)
         cell.layoutIfNeeded()
         
