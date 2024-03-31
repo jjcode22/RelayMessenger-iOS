@@ -64,6 +64,12 @@ class ChatViewController: UICollectionViewController {
         title = otherUser.fullname
         
         collectionView.register(ChatCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
+        collectionView.alwaysBounceVertical = true
+        collectionView.keyboardDismissMode = .onDrag
+        
+        let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
+        layout?.sectionHeadersPinToVisibleBounds = true
     }
     
     private func fetchMessages(){
@@ -85,6 +91,7 @@ class ChatViewController: UICollectionViewController {
             }
             
             self.collectionView.reloadData()
+            self.collectionView.scrollToLastItem()
         }
     }
     

@@ -25,6 +25,7 @@
 		283694252BA2FCE3001D417E /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283694242BA2FCE3001D417E /* CustomLabel.swift */; };
 		283694272BA2FF11001D417E /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283694262BA2FF11001D417E /* CustomImageView.swift */; };
 		285FB1582BB8E8EB00F5E95D /* ChatHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285FB1572BB8E8EB00F5E95D /* ChatHeader.swift */; };
+		285FB15A2BB8EFA800F5E95D /* CollectionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285FB1592BB8EFA800F5E95D /* CollectionViews.swift */; };
 		289EC2C02BAC161B001D8CB7 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289EC2BF2BAC161B001D8CB7 /* ConversationViewController.swift */; };
 		289EC2C22BAC3112001D8CB7 /* VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289EC2C12BAC3112001D8CB7 /* VC.swift */; };
 		289EC2C42BAC653B001D8CB7 /* LoginGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289EC2C32BAC653B001D8CB7 /* LoginGoogle.swift */; };
@@ -68,6 +69,7 @@
 		283694242BA2FCE3001D417E /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		283694262BA2FF11001D417E /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		285FB1572BB8E8EB00F5E95D /* ChatHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHeader.swift; sourceTree = "<group>"; };
+		285FB1592BB8EFA800F5E95D /* CollectionViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViews.swift; sourceTree = "<group>"; };
 		289EC2BF2BAC161B001D8CB7 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		289EC2C12BAC3112001D8CB7 /* VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.swift; sourceTree = "<group>"; };
 		289EC2C32BAC653B001D8CB7 /* LoginGoogle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginGoogle.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				283694172BA2A341001D417E /* Views.swift */,
 				283694192BA2B815001D417E /* Buttons.swift */,
 				289EC2C12BAC3112001D8CB7 /* VC.swift */,
+				285FB1592BB8EFA800F5E95D /* CollectionViews.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				2836941A2BA2B815001D417E /* Buttons.swift in Sources */,
 				283694212BA2F1F6001D417E /* RegisterViewModel.swift in Sources */,
 				289EC2C22BAC3112001D8CB7 /* VC.swift in Sources */,
+				285FB15A2BB8EFA800F5E95D /* CollectionViews.swift in Sources */,
 				283694132BA1CE9E001D417E /* LoginViewController.swift in Sources */,
 				283694152BA1D017001D417E /* RegisterViewController.swift in Sources */,
 				283694232BA2F4C3001D417E /* AuthLoginModel.swift in Sources */,
