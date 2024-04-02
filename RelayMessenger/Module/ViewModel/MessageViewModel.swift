@@ -37,6 +37,18 @@ struct MessageViewModel {
         return URL(string: message.profileImage)
     }
     
+    var imageURL: URL? {
+        return URL(string: message.imageURL)
+    }
+    
+    var isImageHidden: Bool {
+        message.imageURL == ""
+    }
+    
+    var isTextHidden: Bool {
+        message.imageURL != ""
+    }
+    
     var fullname: String {
         return message.fullname
     }

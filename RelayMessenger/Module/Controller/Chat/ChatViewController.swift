@@ -48,8 +48,8 @@ class ChatViewController: UICollectionViewController {
         
     }()
     
-    private var currentUser: User
-    private var otherUser: User
+    var currentUser: User
+    var otherUser: User
     
     //MARK: - lifecycle
     init(currentUser: User,otherUser: User) {
@@ -196,7 +196,7 @@ extension ChatViewController: CustomInputViewDelegate {
             //increment unReadCount by 1 every time a new message is uploaded in the chat
             MessageServices.uploadMessage(message: message, currentUser: currentUser, otherUser: otherUser, unReadCount: unReadCount + 1) { _ in
                 print("message sent")
-                collectionView.reloadData()
+                self.collectionView.reloadData()
             }
         }
         view.clearTextView()

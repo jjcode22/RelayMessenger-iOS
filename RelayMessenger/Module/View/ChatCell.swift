@@ -40,6 +40,12 @@ class ChatCell: UICollectionViewCell {
         return tv
     }()
     
+    private let postImage: CustomImageView = {
+        let iv = CustomImageView()
+        iv.isHidden = true
+        return iv
+    }()
+    
     
     //MARK: - lifecycle
     override init(frame: CGRect) {
@@ -69,6 +75,10 @@ class ChatCell: UICollectionViewCell {
         dateRightAnchor = dateLabel.rightAnchor.constraint(equalTo: bubbleContainer.leftAnchor, constant: -12)
         dateRightAnchor.isActive = false
         dateLabel.anchor(bottom: bottomAnchor)
+        
+        addSubview(postImage)
+        postImage.anchor(top: bubbleContainer.topAnchor,left: bubbleContainer.leftAnchor,bottom: bubbleContainer.bottomAnchor, right: bubbleContainer.rightAnchor,paddingTop: 4,paddingLeft: 12,paddingBottom: 4,paddingRight: 12)
+    
     }
     
     required init?(coder: NSCoder) {
@@ -94,6 +104,14 @@ class ChatCell: UICollectionViewCell {
         guard let timestampString = viewModel.timestamp else {return}
         
         dateLabel.text = timestampString
+        
+        postImage.sd_setImage(with: viewModel.imageURL)
+        textView.isHidden = viewModel.isTextHidden
+        postImage.isHidden = viewModel.isImageHidden
+        
+        if !viewModel.isImageHidden {
+            postImage.setHeight(200)
+        }
         
     }
 }

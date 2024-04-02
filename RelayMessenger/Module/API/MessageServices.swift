@@ -41,7 +41,7 @@ struct MessageServices {
         
     }
     
-    static func uploadMessage(message: String,currentUser: User,otherUser: User,unReadCount: Int, completion:  ((Error?) -> Void)?){
+    static func uploadMessage(message: String = "",imageURL:String = "",currentUser: User,otherUser: User,unReadCount: Int, completion:  ((Error?) -> Void)?){
         //what currentUser will see
         let dataFrom: [String: Any] = [
             "text": message,
@@ -53,7 +53,8 @@ struct MessageServices {
             "fullname": otherUser.fullname,
             "profileImage": otherUser.profileImage,
             
-            "newMsgCount": 0
+            "newMsgCount": 0,
+            "imageURL": imageURL
         ]
         //What otherUser will see
         let dataTo: [String: Any] = [
@@ -66,7 +67,8 @@ struct MessageServices {
             "fullname": currentUser.fullname,
             "profileImage": currentUser.profileImage,
             
-            "newMsgCount": unReadCount
+            "newMsgCount": unReadCount,
+            "imageURL": imageURL
         ]
         
         Collection_Message.document(currentUser.uid).collection(otherUser.uid).addDocument(data: dataFrom) { _ in

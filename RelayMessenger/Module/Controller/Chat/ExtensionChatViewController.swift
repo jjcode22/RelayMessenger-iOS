@@ -22,12 +22,43 @@ extension ChatViewController{
         present(imagePicker, animated: true)
         print("Gallery")
     }
+    
+    
 }
 
 //MARK: - UIImagePickerControllerDelegate
 extension ChatViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        //
+        //getting the mediaType
+        dismiss(animated: true) {
+            guard let mediaType = info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey.mediaType.rawValue)] as? String else {return}
+            print("mediaType: \(mediaType)")
+            
+            if mediaType == "public.image"{
+                //upload image
+                guard let image = info[.editedImage] as? UIImage else {return}
+                self.uploadImage(withImage: image)
+            }
+        }
     }
     
+}
+
+//MARK: - Upload media
+
+extension ChatViewController{
+    func uploadImage(withImage image: UIImage){
+        showLoader(true)
+        FileUploader.uploadImage(image: image) { [self] imageURL in
+            MessageServices.fetchSingleRecentMessage(otherUser: otherUser) { unReadCount in
+                MessageServices.uploadMessage(imageURL: imageURL, currentUser: self.currentUser, otherUser: self.otherUser, unReadCount: unReadCount + 1) { error in
+                    self.showLoader(false)
+                    if let error = error {
+                        print("Error: \(error.localizedDescription)")
+                        return
+                    }
+                }
+            }
+        }
+    }
 }
