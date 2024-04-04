@@ -41,12 +41,20 @@ struct MessageViewModel {
         return URL(string: message.imageURL)
     }
     
+    var videoURL: URL? {
+        return URL(string: message.videoURL)
+    }
+    
     var isImageHidden: Bool {
-        message.imageURL == ""
+        return message.imageURL == ""
     }
     
     var isTextHidden: Bool {
-        message.imageURL != ""
+        return message.imageURL != ""
+    }
+    
+    var isVideoHidden: Bool {
+        return message.videoURL == ""
     }
     
     var fullname: String {

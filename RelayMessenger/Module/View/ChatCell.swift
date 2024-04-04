@@ -46,6 +46,16 @@ class ChatCell: UICollectionViewCell {
         return iv
     }()
     
+    private lazy var postVideo: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+        button.tintColor = .white
+        button.isHidden = true
+        button.setTitle(" Play Video ", for: .normal)
+        button.addTarget(self, action: #selector(handlePlayVideoButton), for: .touchUpInside)
+        return button
+    }()
+    
     
     //MARK: - lifecycle
     override init(frame: CGRect) {
@@ -78,6 +88,9 @@ class ChatCell: UICollectionViewCell {
         
         addSubview(postImage)
         postImage.anchor(top: bubbleContainer.topAnchor,left: bubbleContainer.leftAnchor,bottom: bubbleContainer.bottomAnchor, right: bubbleContainer.rightAnchor,paddingTop: 4,paddingLeft: 12,paddingBottom: 4,paddingRight: 12)
+        
+        addSubview(postVideo)
+        postVideo.anchor(top: bubbleContainer.topAnchor,left: bubbleContainer.leftAnchor,bottom: bubbleContainer.bottomAnchor, right: bubbleContainer.rightAnchor,paddingTop: 4,paddingLeft: 12,paddingBottom: 4,paddingRight: 12)
     
     }
     
@@ -108,10 +121,16 @@ class ChatCell: UICollectionViewCell {
         postImage.sd_setImage(with: viewModel.imageURL)
         textView.isHidden = viewModel.isTextHidden
         postImage.isHidden = viewModel.isImageHidden
+        postVideo.isHidden = viewModel.isVideoHidden
         
         if !viewModel.isImageHidden {
             postImage.setHeight(200)
         }
+        
+    }
+    
+    @objc func handlePlayVideoButton(){
+        
         
     }
 }
