@@ -87,3 +87,16 @@ extension ChatViewController{
         
     }
 }
+
+//MARK: - ChatCellDelegate - for playing video
+
+extension ChatViewController: ChatCellDelegate {
+    func cell(wantsToPlayVideo cell: ChatCell, videoURL: URL?) {
+        guard let videoURL = videoURL else {return}
+        let controller = VideoPlayerVIewController(videoURL: videoURL)
+        navigationController?.pushViewController(controller, animated: true)
+        
+    }
+    
+    
+}

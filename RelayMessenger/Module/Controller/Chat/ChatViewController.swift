@@ -156,6 +156,7 @@ extension ChatViewController{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ChatCell
         let message = messages[indexPath.section][indexPath.row]
         cell.viewModel = MessageViewModel(message: message)
+        cell.delegate = self
         return cell
     }
     

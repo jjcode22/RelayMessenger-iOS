@@ -5,11 +5,16 @@
 //  Created by JJ on 22/03/24.
 //
 
-import Foundation
 import UIKit
+
+protocol ChatCellDelegate: AnyObject {
+    func cell(wantsToPlayVideo cell: ChatCell, videoURL: URL?)
+}
 
 class ChatCell: UICollectionViewCell {
     //MARK: - properties
+    weak var delegate: ChatCellDelegate?
+    
     var viewModel: MessageViewModel? {
         didSet{
             configure()
@@ -130,7 +135,8 @@ class ChatCell: UICollectionViewCell {
     }
     
     @objc func handlePlayVideoButton(){
-        
+        guard let viewModel = viewModel else {return}
+        delegate?.cell(wantsToPlayVideo: self, videoURL: viewModel.videoURL)
         
     }
 }
