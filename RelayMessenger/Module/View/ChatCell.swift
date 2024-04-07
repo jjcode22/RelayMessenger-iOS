@@ -9,6 +9,7 @@ import UIKit
 
 protocol ChatCellDelegate: AnyObject {
     func cell(wantsToPlayVideo cell: ChatCell, videoURL: URL?)
+    func cell(wantsToShowImage cell:ChatCell, imageURL: URL?)
 }
 
 class ChatCell: UICollectionViewCell {
@@ -45,8 +46,11 @@ class ChatCell: UICollectionViewCell {
         return tv
     }()
     
-    private let postImage: CustomImageView = {
+    private lazy var postImage: CustomImageView = {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleImage))
         let iv = CustomImageView()
+        iv.addGestureRecognizer(tap)
+        iv.isUserInteractionEnabled = true
         iv.isHidden = true
         return iv
     }()
@@ -137,6 +141,12 @@ class ChatCell: UICollectionViewCell {
     @objc func handlePlayVideoButton(){
         guard let viewModel = viewModel else {return}
         delegate?.cell(wantsToPlayVideo: self, videoURL: viewModel.videoURL)
+        
+    }
+    
+    @objc func handleImage(){
+        guard let viewModel = viewModel else {return}
+        delegate?.cell(wantsToShowImage: self, imageURL: viewModel.imageURL)
         
     }
 }

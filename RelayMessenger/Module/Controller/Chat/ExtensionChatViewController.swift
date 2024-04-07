@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import SDWebImage
+import ImageSlideshow
+
 //MARK: -  Handle Camera and Gallery attachments
 
 extension ChatViewController{
@@ -90,13 +93,26 @@ extension ChatViewController{
 
 //MARK: - ChatCellDelegate - for playing video
 
-extension ChatViewController: ChatCellDelegate {
+extension ChatViewController: ChatCellDelegate,ImageSlideshowDelegate {
     func cell(wantsToPlayVideo cell: ChatCell, videoURL: URL?) {
         guard let videoURL = videoURL else {return}
-        let controller = VideoPlayerVIewController(videoURL: videoURL)
+        let controller = VideoPlayerViewController(videoURL: videoURL)
         navigationController?.pushViewController(controller, animated: true)
         
     }
     
-    
+    func cell(wantsToShowImage cell: ChatCell, imageURL: URL?) {
+        let slideShow = ImageSlideshow()
+        guard let imageURL = imageURL else {return}
+        SDWebImageManager.shared().loadImage(with: imageURL, progress: nil){image,_,_,_,_,_ in
+            guard let image = image else {return}
+            slideShow.setImageInputs([
+                ImageSource(image: image)
+            ])
+            slideShow.delegate = self
+            let controller = slideShow.presentFullScreenController(from: self)
+            controller.slideshow.activityIndicator = DefaultActivityIndicator()
+        }
+        
+    }
 }

@@ -19,4 +19,6 @@ pod 'GoogleSignIn'
 pod 'JGProgressHUD','~>2.0.3'
 pod 'SDWebImage', '~>4.4.2'
 
+pod 'ImageSlideshow','~>1.9.0'
+
 end
