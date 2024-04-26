@@ -10,6 +10,9 @@
 		0A2AE59D9A047D9CEE0D57DD /* Pods_RelayMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C7897753CC53710ADEC9CB /* Pods_RelayMessenger.framework */; };
 		282917422BBE27E1004D4D43 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282917412BBE27E1004D4D43 /* VideoPlayerViewController.swift */; };
 		282B9CDB2BDBB8EC008083E9 /* AKAudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282B9CDA2BDBB8EC008083E9 /* AKAudioRecorder.swift */; };
+		282B9CDE2BDC1DC9008083E9 /* Pali Hill.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 282B9CDD2BDC1DC9008083E9 /* Pali Hill.gpx */; };
+		282B9CE02BDC23A1008083E9 /* FLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282B9CDF2BDC23A1008083E9 /* FLocationManager.swift */; };
+		282B9CE22BDC3206008083E9 /* ChatMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282B9CE12BDC3206008083E9 /* ChatMapVC.swift */; };
 		283693F72BA1C78A001D417E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283693F62BA1C78A001D417E /* AppDelegate.swift */; };
 		283693F92BA1C78A001D417E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283693F82BA1C78A001D417E /* SceneDelegate.swift */; };
 		283693FB2BA1C78A001D417E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283693FA2BA1C78A001D417E /* ViewController.swift */; };
@@ -55,6 +58,9 @@
 /* Begin PBXFileReference section */
 		282917412BBE27E1004D4D43 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		282B9CDA2BDBB8EC008083E9 /* AKAudioRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKAudioRecorder.swift; sourceTree = "<group>"; };
+		282B9CDD2BDC1DC9008083E9 /* Pali Hill.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Pali Hill.gpx"; sourceTree = "<group>"; };
+		282B9CDF2BDC23A1008083E9 /* FLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FLocationManager.swift; sourceTree = "<group>"; };
+		282B9CE12BDC3206008083E9 /* ChatMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMapVC.swift; sourceTree = "<group>"; };
 		283693F32BA1C78A001D417E /* RelayMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RelayMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		283693F62BA1C78A001D417E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		283693F82BA1C78A001D417E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +128,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		282B9CDC2BDC1D97008083E9 /* Dummy Locations */ = {
+			isa = PBXGroup;
+			children = (
+				282B9CDD2BDC1DC9008083E9 /* Pali Hill.gpx */,
+			);
+			path = "Dummy Locations";
+			sourceTree = "<group>";
+		};
 		283693EA2BA1C78A001D417E = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +167,7 @@
 		2836940A2BA1C79C001D417E /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				282B9CDC2BDC1D97008083E9 /* Dummy Locations */,
 				283693F62BA1C78A001D417E /* AppDelegate.swift */,
 				283693F82BA1C78A001D417E /* SceneDelegate.swift */,
 				283693FA2BA1C78A001D417E /* ViewController.swift */,
@@ -207,6 +222,7 @@
 				283694142BA1D017001D417E /* RegisterViewController.swift */,
 				289EC2C92BAC8E8A001D8CB7 /* SplashViewController.swift */,
 				282917412BBE27E1004D4D43 /* VideoPlayerViewController.swift */,
+				282B9CE12BDC3206008083E9 /* ChatMapVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -259,6 +275,7 @@
 		2836941D2BA2E99D001D417E /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				282B9CDF2BDC23A1008083E9 /* FLocationManager.swift */,
 				2836941E2BA2E9AD001D417E /* CustomTextField.swift */,
 				283694242BA2FCE3001D417E /* CustomLabel.swift */,
 				283694262BA2FF11001D417E /* CustomImageView.swift */,
@@ -307,6 +324,7 @@
 				283693F02BA1C78A001D417E /* Frameworks */,
 				283693F12BA1C78A001D417E /* Resources */,
 				CE5D586917FFE86A46B5FADB /* [CP] Embed Pods Frameworks */,
+				A0588DCFCBE71A4B561737A2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -355,6 +373,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				282B9CDE2BDC1DC9008083E9 /* Pali Hill.gpx in Resources */,
 				283694032BA1C78D001D417E /* LaunchScreen.storyboard in Resources */,
 				28BD0E3E2BA330CB005B1743 /* GoogleService-Info.plist in Resources */,
 				283694002BA1C78D001D417E /* Assets.xcassets in Resources */,
@@ -365,6 +384,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		A0588DCFCBE71A4B561737A2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RelayMessenger/Pods-RelayMessenger-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RelayMessenger/Pods-RelayMessenger-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RelayMessenger/Pods-RelayMessenger-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		CE5D586917FFE86A46B5FADB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -419,6 +455,7 @@
 				283694132BA1CE9E001D417E /* LoginViewController.swift in Sources */,
 				283694152BA1D017001D417E /* RegisterViewController.swift in Sources */,
 				283694232BA2F4C3001D417E /* AuthLoginModel.swift in Sources */,
+				282B9CE02BDC23A1008083E9 /* FLocationManager.swift in Sources */,
 				28E540D42BB1B89B0020BE40 /* MessageServices.swift in Sources */,
 				289EC2D62BADA494001D8CB7 /* CustomInputView.swift in Sources */,
 				289EC2C42BAC653B001D8CB7 /* LoginGoogle.swift in Sources */,
@@ -427,6 +464,7 @@
 				289EC2C62BAC867A001D8CB7 /* User.swift in Sources */,
 				283694182BA2A341001D417E /* Views.swift in Sources */,
 				28F1FF9F2BB4BE4C00C3E20B /* Message.swift in Sources */,
+				282B9CE22BDC3206008083E9 /* ChatMapVC.swift in Sources */,
 				289EC2D42BAD4813001D8CB7 /* ChatCell.swift in Sources */,
 				289EC2DA2BAE258D001D8CB7 /* UserViewModel.swift in Sources */,
 				282B9CDB2BDBB8EC008083E9 /* AKAudioRecorder.swift in Sources */,

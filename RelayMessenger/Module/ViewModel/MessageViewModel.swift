@@ -49,6 +49,11 @@ struct MessageViewModel {
         return URL(string: message.audioURL)
     }
     
+    var locationURL: URL? {
+        let encodedURL = message.locationURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        return URL(string: encodedURL ?? "")
+    }
+    
     
     var isImageHidden: Bool {
         return message.imageURL == ""
@@ -64,6 +69,10 @@ struct MessageViewModel {
     
     var isAudioHidden: Bool {
         return message.audioURL == ""
+    }
+    
+    var isLocationHidden: Bool {
+        return message.locationURL == ""
     }
     
     var fullname: String {

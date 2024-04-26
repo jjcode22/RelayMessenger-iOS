@@ -27,6 +27,49 @@ extension ChatViewController{
         print("Gallery")
     }
     
+    @objc func handleCurrentLocation(){
+        FLocationManager.shared.start { info in
+            guard let lat = info.latitude else {return}
+            guard let long = info.longitude else {return}
+            
+            self.uploadLocation(lat: "\(lat)", long: "\(long)")
+            FLocationManager.shared.stop()
+        }
+        
+    }
+    
+    @objc func handleGoogleMap(){
+        let controller = ChatMapVC()
+        controller.delegate = self
+        navigationController?.pushViewController(controller, animated: true)
+        
+    }
+    
+    func uploadLocation(lat: String, long: String){
+        let locationURL = "https://www.google.com/maps/dir/?api=1&destination=\(lat),\(long)"
+        self.showLoader(true)
+        MessageServices.fetchSingleRecentMessage(otherUser: otherUser) { unReadCount in
+            MessageServices.uploadMessage(locationURL: locationURL,currentUser: self.currentUser, otherUser: self.otherUser, unReadCount: unReadCount + 1) { error in
+                self.showLoader(false)
+                if let error = error{
+                    print("\(error.localizedDescription)")
+                    return
+                }
+            }
+        }
+        
+    }
+    
+    
+}
+
+//MARK: - ChatMapVCDelegate
+extension ChatViewController: ChatMapVCDelegate{
+    func didTapLocation(lat: String, long: String) {
+        navigationController?.popViewController(animated: true)
+        uploadLocation(lat: lat, long: long)
+    }
+    
     
 }
 
@@ -134,5 +177,18 @@ extension ChatViewController: ChatCellDelegate,ImageSlideshowDelegate {
         }
         
         
+    }
+    
+    func cell(wantsToShowLocation cell: ChatCell, locationURL: URL?) {
+        guard let googleURLApp = URL(string: "comgooglemaps://") else {return}
+        guard let locationURL = locationURL else {return}
+        
+        if UIApplication.shared.canOpenURL(googleURLApp){
+            //open in google maps app
+            UIApplication.shared.open(locationURL)
+        }else{
+            //open in browser
+            UIApplication.shared.open(locationURL,options: [:])
+        }
     }
 }
