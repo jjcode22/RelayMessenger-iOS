@@ -20,5 +20,6 @@ pod 'JGProgressHUD','~>2.0.3'
 pod 'SDWebImage', '~>4.4.2'
 
 pod 'ImageSlideshow','~>1.9.0'
+pod 'SwiftAudioPlayer' , :git => 'https://github.com/Kuama-IT/SwiftAudioPlayer.git', :branch => 'fix-ios-16-crash'
 
 end

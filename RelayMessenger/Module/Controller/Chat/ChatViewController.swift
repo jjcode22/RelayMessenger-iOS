@@ -188,6 +188,22 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
 
 //MARK: - CustomInputViewDelegate
 extension ChatViewController: CustomInputViewDelegate {
+    func inputViewForAudio(_ view: CustomInputView, audioURL: URL) {
+        //
+        self.showLoader(true)
+        FileUploader.uploadAudio(audioURL: audioURL) { audioString in
+            MessageServices.fetchSingleRecentMessage(otherUser: self.otherUser) { unReadCount in
+                MessageServices.uploadMessage(audioURL: audioString,currentUser: self.currentUser, otherUser: self.otherUser, unReadCount: unReadCount + 1) { error in
+                    self.showLoader(false)
+                    if let error = error {
+                        print("\(error.localizedDescription)")
+                        return
+                    }
+                }
+            }
+        }
+    }
+    
     func inputViewForAttach(_ view: CustomInputView) {
         present(attachAlert, animated: true)
     }

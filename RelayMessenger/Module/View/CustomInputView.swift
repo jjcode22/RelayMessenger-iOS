@@ -11,6 +11,7 @@ import UIKit
 protocol CustomInputViewDelegate: AnyObject {
     func inputView(_ view: CustomInputView, wantToUploadMessage message: String)
     func inputViewForAttach(_ view: CustomInputView)
+    func inputViewForAudio(_ view: CustomInputView, audioURL: URL)
     
 }
 
@@ -66,6 +67,41 @@ class CustomInputView: UIView{
         return sv
     }()
     
+    private lazy var cancelButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Cancel", for: .normal)
+        button.setDimensions(height: 40, width: 100)
+        button.addTarget(self, action: #selector(handleCancelButton), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var sendRecordingButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Send", for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 16)
+        button.tintColor = .white
+        button.backgroundColor = .red
+        button.setDimensions(height: 40, width: 100)
+        button.layer.cornerRadius = 12
+        button.clipsToBounds = true
+        button.addTarget(self, action: #selector(handleSendRecording), for: .touchUpInside)
+        return button
+    }()
+    
+    private let timerLabel = CustomLabel(text: "00:00")
+    
+    private lazy var recordStackView: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [cancelButton,timerLabel,sendRecordingButton])
+        sv.axis = .horizontal
+        sv.isHidden = true
+        sv.alignment = .center
+        return sv
+    }()
+    
+    var duration: CGFloat = 0.0
+    var timer: Timer!
+    var recorder = AKAudioRecorder.shared
+    
     
     //MARK: - lifecycle
     override init(frame: CGRect) {
@@ -85,6 +121,9 @@ class CustomInputView: UIView{
         dividerView.backgroundColor = .lightGray
         addSubview(dividerView)
         dividerView.anchor(top: topAnchor,left: leftAnchor,right: rightAnchor, height: 0.5)
+        
+        addSubview(recordStackView)
+        recordStackView.anchor(top: topAnchor,left: leftAnchor,right: rightAnchor,paddingTop: 15,paddingLeft: 12,paddingRight: 12)
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleTextDidChange), name: InputTextView.textDidChangeNotification, object: nil)
         
@@ -112,6 +151,14 @@ class CustomInputView: UIView{
     }
     
     @objc func handleRecord(){
+        stackView.isHidden = true
+        recordStackView.isHidden = false
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+            self.recorder.myRecordings.removeAll() // Delete all recordings before starting a new record
+            self.recorder.record() // We will start recording the voice
+            self.setTimer()
+        })
         
     }
     
@@ -125,8 +172,43 @@ class CustomInputView: UIView{
         
     }
     
+    @objc func handleCancelButton(){
+        recordStackView.isHidden = true
+        stackView.isHidden = false
+        
+    }
+    
+    @objc func handleSendRecording(){
+        recorder.stopRecording()
+        
+        let name = recorder.getRecordings.last ?? ""
+        guard let audioURL = recorder.getAudioURL(name: name) else {return}
+        
+        //Upload the recorded audio file
+        self.delegate?.inputViewForAudio(self, audioURL: audioURL)
+        
+        recordStackView.isHidden = true
+        stackView.isHidden = false
+        
+    }
+    
     func clearTextView(){
         inputTextView.text = ""
         inputTextView.placeholderLabel.isHidden = false
+    }
+    
+    func setTimer(){
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTimer(){
+        if recorder.isRecording && !recorder.isPlaying{
+            duration += 1
+            self.timerLabel.text = duration.timeStringFormatter
+        }else {
+            timer.invalidate()
+            duration = 0
+            self.timerLabel.text = "00:00"
+        }
     }
 }

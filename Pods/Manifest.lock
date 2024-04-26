@@ -867,6 +867,7 @@ PODS:
   - SDWebImage (4.4.8):
     - SDWebImage/Core (= 4.4.8)
   - SDWebImage/Core (4.4.8)
+  - SwiftAudioPlayer (7.6.0)
 
 DEPENDENCIES:
   - Firebase/Auth
@@ -879,6 +880,7 @@ DEPENDENCIES:
   - ImageSlideshow (~> 1.9.0)
   - JGProgressHUD (~> 2.0.3)
   - SDWebImage (~> 4.4.2)
+  - SwiftAudioPlayer (from `https://github.com/Kuama-IT/SwiftAudioPlayer.git`, branch `fix-ios-16-crash`)
 
 SPEC REPOS:
   trunk:
@@ -916,6 +918,16 @@ SPEC REPOS:
     - RecaptchaInterop
     - SDWebImage
 
+EXTERNAL SOURCES:
+  SwiftAudioPlayer:
+    :branch: fix-ios-16-crash
+    :git: https://github.com/Kuama-IT/SwiftAudioPlayer.git
+
+CHECKOUT OPTIONS:
+  SwiftAudioPlayer:
+    :commit: 97a9bf69e41ff19c57be4893bcc8d9f31495e7b2
+    :git: https://github.com/Kuama-IT/SwiftAudioPlayer.git
+
 SPEC CHECKSUMS:
   abseil: 926fb7a82dc6d2b8e1f2ed7f3a718bce691d1e46
   AppAuth: a13994980c1ec792f7e2e665acd4d4aa6be43240
@@ -950,7 +962,8 @@ SPEC CHECKSUMS:
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
   SDWebImage: 783af2c3fa36291a250030c4752ee370a9a51d13
+  SwiftAudioPlayer: a546709faf47f3ab0cb59e41ba4432e6bb61db0a
 
-PODFILE CHECKSUM: e6a360b30b255897ebc43b33412989133196c8fd
+PODFILE CHECKSUM: 20597580aa88f62da5c02f701a3ec309d0ea4095
 
 COCOAPODS: 1.15.2

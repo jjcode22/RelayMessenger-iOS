@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0A2AE59D9A047D9CEE0D57DD /* Pods_RelayMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C7897753CC53710ADEC9CB /* Pods_RelayMessenger.framework */; };
 		282917422BBE27E1004D4D43 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282917412BBE27E1004D4D43 /* VideoPlayerViewController.swift */; };
+		282B9CDB2BDBB8EC008083E9 /* AKAudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282B9CDA2BDBB8EC008083E9 /* AKAudioRecorder.swift */; };
 		283693F72BA1C78A001D417E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283693F62BA1C78A001D417E /* AppDelegate.swift */; };
 		283693F92BA1C78A001D417E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283693F82BA1C78A001D417E /* SceneDelegate.swift */; };
 		283693FB2BA1C78A001D417E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283693FA2BA1C78A001D417E /* ViewController.swift */; };
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		282917412BBE27E1004D4D43 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
+		282B9CDA2BDBB8EC008083E9 /* AKAudioRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKAudioRecorder.swift; sourceTree = "<group>"; };
 		283693F32BA1C78A001D417E /* RelayMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RelayMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		283693F62BA1C78A001D417E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		283693F82BA1C78A001D417E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 		283694112BA1C7FD001D417E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				282B9CDA2BDBB8EC008083E9 /* AKAudioRecorder.swift */,
 				289EC2C52BAC867A001D8CB7 /* User.swift */,
 				28F1FF9E2BB4BE4C00C3E20B /* Message.swift */,
 			);
@@ -426,6 +429,7 @@
 				28F1FF9F2BB4BE4C00C3E20B /* Message.swift in Sources */,
 				289EC2D42BAD4813001D8CB7 /* ChatCell.swift in Sources */,
 				289EC2DA2BAE258D001D8CB7 /* UserViewModel.swift in Sources */,
+				282B9CDB2BDBB8EC008083E9 /* AKAudioRecorder.swift in Sources */,
 				2836941C2BA2C0C8001D417E /* LoginViewModel.swift in Sources */,
 				283694252BA2FCE3001D417E /* CustomLabel.swift in Sources */,
 				289EC2D02BACAF85001D8CB7 /* UserCell.swift in Sources */,

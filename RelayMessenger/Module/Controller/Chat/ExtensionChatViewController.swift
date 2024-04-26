@@ -8,6 +8,7 @@
 import UIKit
 import SDWebImage
 import ImageSlideshow
+import SwiftAudioPlayer
 
 //MARK: -  Handle Camera and Gallery attachments
 
@@ -113,6 +114,25 @@ extension ChatViewController: ChatCellDelegate,ImageSlideshowDelegate {
             let controller = slideShow.presentFullScreenController(from: self)
             controller.slideshow.activityIndicator = DefaultActivityIndicator()
         }
+        
+    }
+    
+    func cell(wantsToPlayAudio cell: ChatCell, audioURL: URL?,isPlaying: Bool) {
+        if isPlaying{
+            guard let audioURL = audioURL else {return}
+            SAPlayer.shared.startRemoteAudio(withRemoteUrl: audioURL)
+            SAPlayer.shared.play()
+            
+            let _ = SAPlayer.Updates.PlayingStatus.subscribe { playingStatus in
+                print("\(playingStatus)")
+                if playingStatus == .ended{
+                    cell.resetAudioSettings()
+                }
+            }
+        }else{
+            SAPlayer.shared.stopStreamingRemoteAudio()
+        }
+        
         
     }
 }

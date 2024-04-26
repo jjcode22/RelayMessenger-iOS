@@ -10,6 +10,7 @@ import UIKit
 protocol ChatCellDelegate: AnyObject {
     func cell(wantsToPlayVideo cell: ChatCell, videoURL: URL?)
     func cell(wantsToShowImage cell:ChatCell, imageURL: URL?)
+    func cell(wantsToPlayAudio cell:ChatCell, audioURL: URL?,isPlaying: Bool)
 }
 
 class ChatCell: UICollectionViewCell {
@@ -65,6 +66,18 @@ class ChatCell: UICollectionViewCell {
         return button
     }()
     
+    private lazy var postAudio: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        button.tintColor = .white
+        button.isHidden = true
+        button.setTitle(" Play Audio ", for: .normal)
+        button.addTarget(self, action: #selector(handleAudioButton), for: .touchUpInside)
+        return button
+    }()
+    
+    var isVoicePlaying: Bool = true
+    
     
     //MARK: - lifecycle
     override init(frame: CGRect) {
@@ -100,6 +113,9 @@ class ChatCell: UICollectionViewCell {
         
         addSubview(postVideo)
         postVideo.anchor(top: bubbleContainer.topAnchor,left: bubbleContainer.leftAnchor,bottom: bubbleContainer.bottomAnchor, right: bubbleContainer.rightAnchor,paddingTop: 4,paddingLeft: 12,paddingBottom: 4,paddingRight: 12)
+        
+        addSubview(postAudio)
+        postAudio.anchor(top: bubbleContainer.topAnchor,left: bubbleContainer.leftAnchor,bottom: bubbleContainer.bottomAnchor, right: bubbleContainer.rightAnchor,paddingTop: 4,paddingLeft: 12,paddingBottom: 4,paddingRight: 12)
     
     }
     
@@ -131,6 +147,7 @@ class ChatCell: UICollectionViewCell {
         textView.isHidden = viewModel.isTextHidden
         postImage.isHidden = viewModel.isImageHidden
         postVideo.isHidden = viewModel.isVideoHidden
+        postAudio.isHidden = viewModel.isAudioHidden
         
         if !viewModel.isImageHidden {
             postImage.setHeight(200)
@@ -147,6 +164,24 @@ class ChatCell: UICollectionViewCell {
     @objc func handleImage(){
         guard let viewModel = viewModel else {return}
         delegate?.cell(wantsToShowImage: self, imageURL: viewModel.imageURL)
+        
+    }
+    
+    @objc func handleAudioButton(){
+        guard let viewModel = viewModel else {return}
+        delegate?.cell(wantsToPlayAudio: self, audioURL: viewModel.audioURL, isPlaying: isVoicePlaying)
+        
+        isVoicePlaying.toggle()
+        let title = isVoicePlaying ? "Play Audio" : "Stop Audio"
+        let imageName = isVoicePlaying ? "play.fill" : "stop.fill"
+        postAudio.setTitle(title, for: .normal)
+        postAudio.setImage(UIImage(systemName: imageName), for: .normal)
+    }
+    
+    func resetAudioSettings(){
+        postAudio.setTitle("Play Audio", for: .normal)
+        postAudio.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        isVoicePlaying = true
         
     }
 }

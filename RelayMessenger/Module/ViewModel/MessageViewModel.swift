@@ -45,6 +45,11 @@ struct MessageViewModel {
         return URL(string: message.videoURL)
     }
     
+    var audioURL: URL? {
+        return URL(string: message.audioURL)
+    }
+    
+    
     var isImageHidden: Bool {
         return message.imageURL == ""
     }
@@ -55,6 +60,10 @@ struct MessageViewModel {
     
     var isVideoHidden: Bool {
         return message.videoURL == ""
+    }
+    
+    var isAudioHidden: Bool {
+        return message.audioURL == ""
     }
     
     var fullname: String {

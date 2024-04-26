@@ -19,6 +19,7 @@ struct Message {
     let profileImage: String
     let imageURL: String
     let videoURL: String
+    let audioURL: String
     
     var isFromCurrentUser: Bool
     
@@ -39,6 +40,7 @@ struct Message {
         self.newMsgCount = dictionary["newMsgCount"] as? Int ?? 0
         self.imageURL = dictionary["imageURL"] as? String ?? ""
         self.videoURL = dictionary["videoURL"] as? String ?? ""
+        self.audioURL = dictionary["audioURL"] as? String ?? ""
         
         self.isFromCurrentUser = fromID == Auth.auth().currentUser?.uid
     }
