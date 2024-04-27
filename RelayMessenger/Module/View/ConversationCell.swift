@@ -42,6 +42,7 @@ class ConversationCell: UITableViewCell {
         
         addSubview(profileImageView)
         profileImageView.centerY(inView: self, leftAnchor: leftAnchor)
+        profileImageView.contentMode = .scaleAspectFill
         
         let stackView = UIStackView(arrangedSubviews: [fullname,recentMessage])
         

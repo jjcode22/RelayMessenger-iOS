@@ -13,6 +13,10 @@
 		282B9CDE2BDC1DC9008083E9 /* Pali Hill.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 282B9CDD2BDC1DC9008083E9 /* Pali Hill.gpx */; };
 		282B9CE02BDC23A1008083E9 /* FLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282B9CDF2BDC23A1008083E9 /* FLocationManager.swift */; };
 		282B9CE22BDC3206008083E9 /* ChatMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282B9CE12BDC3206008083E9 /* ChatMapVC.swift */; };
+		282B9CE52BDC4EC7008083E9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282B9CE42BDC4EC7008083E9 /* ProfileViewController.swift */; };
+		282B9CE72BDCB1AA008083E9 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282B9CE62BDCB1AA008083E9 /* ProfileCell.swift */; };
+		282B9CE92BDD1468008083E9 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282B9CE82BDD1468008083E9 /* ProfileViewModel.swift */; };
+		282B9CEB2BDD221E008083E9 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282B9CEA2BDD221E008083E9 /* EditProfileViewController.swift */; };
 		283693F72BA1C78A001D417E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283693F62BA1C78A001D417E /* AppDelegate.swift */; };
 		283693F92BA1C78A001D417E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283693F82BA1C78A001D417E /* SceneDelegate.swift */; };
 		283693FB2BA1C78A001D417E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283693FA2BA1C78A001D417E /* ViewController.swift */; };
@@ -61,6 +65,10 @@
 		282B9CDD2BDC1DC9008083E9 /* Pali Hill.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Pali Hill.gpx"; sourceTree = "<group>"; };
 		282B9CDF2BDC23A1008083E9 /* FLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FLocationManager.swift; sourceTree = "<group>"; };
 		282B9CE12BDC3206008083E9 /* ChatMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMapVC.swift; sourceTree = "<group>"; };
+		282B9CE42BDC4EC7008083E9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		282B9CE62BDCB1AA008083E9 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		282B9CE82BDD1468008083E9 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		282B9CEA2BDD221E008083E9 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		283693F32BA1C78A001D417E /* RelayMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RelayMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		283693F62BA1C78A001D417E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		283693F82BA1C78A001D417E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +142,15 @@
 				282B9CDD2BDC1DC9008083E9 /* Pali Hill.gpx */,
 			);
 			path = "Dummy Locations";
+			sourceTree = "<group>";
+		};
+		282B9CE32BDC4EAC008083E9 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				282B9CE42BDC4EC7008083E9 /* ProfileViewController.swift */,
+				282B9CEA2BDD221E008083E9 /* EditProfileViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		283693EA2BA1C78A001D417E = {
@@ -216,6 +233,7 @@
 		2836940E2BA1C7E4001D417E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				282B9CE32BDC4EAC008083E9 /* Profile */,
 				289EC2BE2BAC160A001D8CB7 /* Chat */,
 				283694122BA1CE9E001D417E /* LoginViewController.swift */,
 				289EC2C32BAC653B001D8CB7 /* LoginGoogle.swift */,
@@ -235,6 +253,7 @@
 				283694222BA2F4C3001D417E /* AuthLoginModel.swift */,
 				289EC2D92BAE258D001D8CB7 /* UserViewModel.swift */,
 				28A462DE2BB5B594009EDB74 /* MessageViewModel.swift */,
+				282B9CE82BDD1468008083E9 /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -247,6 +266,7 @@
 				289EC2D32BAD4813001D8CB7 /* ChatCell.swift */,
 				289EC2D52BADA494001D8CB7 /* CustomInputView.swift */,
 				285FB1572BB8E8EB00F5E95D /* ChatHeader.swift */,
+				282B9CE62BDCB1AA008083E9 /* ProfileCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -447,6 +467,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				282B9CEB2BDD221E008083E9 /* EditProfileViewController.swift in Sources */,
 				285FB1582BB8E8EB00F5E95D /* ChatHeader.swift in Sources */,
 				2836941A2BA2B815001D417E /* Buttons.swift in Sources */,
 				283694212BA2F1F6001D417E /* RegisterViewModel.swift in Sources */,
@@ -474,6 +495,8 @@
 				28BD0E452BA3385D005B1743 /* FileUploader.swift in Sources */,
 				289EC2C02BAC161B001D8CB7 /* ConversationViewController.swift in Sources */,
 				283693FB2BA1C78A001D417E /* ViewController.swift in Sources */,
+				282B9CE72BDCB1AA008083E9 /* ProfileCell.swift in Sources */,
+				282B9CE92BDD1468008083E9 /* ProfileViewModel.swift in Sources */,
 				28478E962BB996CE00A54D6B /* ExtensionChatViewController.swift in Sources */,
 				28A462DF2BB5B594009EDB74 /* MessageViewModel.swift in Sources */,
 				28BD0E402BA33134005B1743 /* AuthServices.swift in Sources */,
@@ -483,6 +506,7 @@
 				283693F92BA1C78A001D417E /* SceneDelegate.swift in Sources */,
 				289EC2D82BADA7F2001D8CB7 /* InputTextView.swift in Sources */,
 				289EC2CE2BACA6C5001D8CB7 /* ConversationCell.swift in Sources */,
+				282B9CE52BDC4EC7008083E9 /* ProfileViewController.swift in Sources */,
 				289EC2D22BAD3D36001D8CB7 /* ChatViewController.swift in Sources */,
 				2836941F2BA2E9AD001D417E /* CustomTextField.swift in Sources */,
 				283694272BA2FF11001D417E /* CustomImageView.swift in Sources */,

@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseFirestore
+import FirebaseAuth
 
 struct UserServices{
     static func fetchUser(uid:String, completion: @escaping(User) -> Void ){
@@ -32,5 +33,12 @@ struct UserServices{
             completion(users)
         
         }
+    }
+    
+    static func updateUserData(data: [String: Any],completion: @escaping(Error?) -> Void){
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        
+        Collection_User.document(uid).updateData(data, completion: completion)
+        
     }
 }

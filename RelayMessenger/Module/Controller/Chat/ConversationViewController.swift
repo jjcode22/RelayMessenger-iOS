@@ -45,6 +45,17 @@ class ConversationViewController: UIViewController {
     
     private var conversationDictionary = [String: Message]()
     
+    private lazy var profileButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "info"), for: .normal)
+        button.tintColor = .white
+        button.backgroundColor = .systemGray3
+        button.setDimensions(height: 40, width: 40)
+        button.layer.cornerRadius = 20
+        button.addTarget(self, action: #selector(handleProfileButton), for: .touchUpInside)
+        return button
+    }()
+    
     
     //MARK: - Lifecycle
     init(user: User){
@@ -77,6 +88,9 @@ class ConversationViewController: UIViewController {
         
         view.addSubview(unReadMsgLabel)
         unReadMsgLabel.anchor(left: view.safeAreaLayoutGuide.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingLeft: 20, paddingBottom: 10)
+        
+        view.addSubview(profileButton)
+        profileButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor,right: view.rightAnchor,paddingBottom: 10,paddingRight: 20)
     }
     
     private func fetchConversations(){
@@ -119,6 +133,11 @@ class ConversationViewController: UIViewController {
         let nav = UINavigationController(rootViewController: controller)
         present(nav, animated: true, completion: nil)
         
+    }
+    
+    @objc func handleProfileButton(){
+        let controller = ProfileViewController(user: user)
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     private func openChat(currentUser: User,otherUser: User){
