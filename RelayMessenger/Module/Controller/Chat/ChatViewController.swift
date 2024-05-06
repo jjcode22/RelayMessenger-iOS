@@ -11,7 +11,11 @@ class ChatViewController: UICollectionViewController {
     //MARK: - properties
     private let reuseIdentifier = "ChatCell"
     private let chatHeaderIdentifer = "ChatHeader"
-    private var messages = [[Message]]()
+    private var messages = [[Message]](){
+        didSet{
+            self.emptyView.isHidden = !messages.isEmpty
+        }
+    }
     
     private lazy var customInputView: CustomInputView = {
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
@@ -26,6 +30,16 @@ class ChatViewController: UICollectionViewController {
         picker.delegate = self
         return picker
     }()
+    
+    private let emptyView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black.withAlphaComponent(0.5)
+        view.layer.cornerRadius = 12
+        view.isHidden = true
+        return view
+    }()
+    
+    private var emptyLabel = CustomLabel(text: "The conversation is new and encrypted.",labelColor: .yellow)
     
     private lazy var attachAlert: UIAlertController = {
         let alert = UIAlertController(title: "Attach file", message: "Select the button you want to attach from", preferredStyle: .actionSheet)
@@ -114,6 +128,11 @@ class ChatViewController: UICollectionViewController {
         
         let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
         layout?.sectionHeadersPinToVisibleBounds = true
+        
+        view.addSubview(emptyView)
+        emptyView.anchor(left: view.leftAnchor,bottom: view.safeAreaLayoutGuide.bottomAnchor,right: view.rightAnchor,paddingLeft: 25,paddingBottom: 70,paddingRight: 25,height: 50)
+        emptyView.addSubview(emptyLabel)
+        emptyLabel.anchor(top: emptyView.topAnchor,left: emptyView.leftAnchor,bottom: emptyView.bottomAnchor, right: emptyView.rightAnchor,paddingTop: 7,paddingLeft: 7,paddingBottom: 7, paddingRight: 7)
     }
     
     private func fetchMessages(){

@@ -116,10 +116,7 @@ class EditProfileViewController: UIViewController{
                 "fullname": fullname,
                 "username": username
             ]
-            UserServices.updateUserData(data: param) { _ in
-                //
-                self.showLoader(false)
-            }
+            updateUser(params: param)
         }else{
             //Update user data w image
             guard let selectedImage = selectedImage else {return}
@@ -129,12 +126,18 @@ class EditProfileViewController: UIViewController{
                     "username": username,
                     "profileImageURL": imageURL
                 ]
-                UserServices.updateUserData(data: param) { _ in
-                    //
-                    self.showLoader(false)
-                }
+                self.updateUser(params: param)
+                
             }
             
+        }
+    }
+    
+    private func updateUser(params: [String: Any]){
+        UserServices.updateUserData(data: params) { _ in
+            //
+            self.showLoader(false)
+            NotificationCenter.default.post(name: .userProfileUpdated, object: nil)
         }
     }
     

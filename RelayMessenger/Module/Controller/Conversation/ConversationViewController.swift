@@ -30,9 +30,12 @@ class ConversationViewController: UIViewController {
     
     private var conversations: [Message] = []{
         didSet{
+            emptyView.isHidden = !conversations.isEmpty
             tableView.reloadData()
         }
     }
+    
+    private var filterConversations: [Message] = []
     
     private var unReadCount: Int = 0 {
         didSet{
@@ -43,7 +46,22 @@ class ConversationViewController: UIViewController {
         }
     }
     
+    private let searchController = UISearchController(searchResultsController: nil)
     private var conversationDictionary = [String: Message]()
+    
+    private var isSearchMode: Bool{
+        return searchController.isActive && !searchController.searchBar.text!.isEmpty
+    }
+    
+    private let emptyView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black.withAlphaComponent(0.5)
+        view.layer.cornerRadius = 12
+        view.isHidden = true
+        return view
+    }()
+    
+    private var emptyLabel = CustomLabel(text: "There are no conversations, Click add to start chatting.",labelColor: .yellow)
     
     private lazy var profileButton: UIButton = {
         let button = UIButton(type: .system)
@@ -71,6 +89,7 @@ class ConversationViewController: UIViewController {
         configureUI()
         configureTableView()
         fetchConversations()
+        configureSearchController()
     }
     
     //MARK: - Helpers
@@ -91,6 +110,25 @@ class ConversationViewController: UIViewController {
         
         view.addSubview(profileButton)
         profileButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor,right: view.rightAnchor,paddingBottom: 10,paddingRight: 20)
+        
+        view.addSubview(emptyView)
+        emptyView.anchor(left: view.leftAnchor,bottom: profileButton.topAnchor,right: view.rightAnchor,paddingLeft: 25,paddingBottom: 25,paddingRight: 25,height: 50)
+        emptyView.addSubview(emptyLabel)
+        emptyLabel.anchor(top: emptyView.topAnchor,left: emptyView.leftAnchor,bottom: emptyView.bottomAnchor, right: emptyView.rightAnchor,paddingTop: 7,paddingLeft: 7,paddingBottom: 7, paddingRight: 7)
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleUpdateProfile), name: .userProfileUpdated, object: nil)
+    }
+    
+    private func configureSearchController(){
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
+        definesPresentationContext = false
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
+        
     }
     
     private func fetchConversations(){
@@ -135,6 +173,13 @@ class ConversationViewController: UIViewController {
         
     }
     
+    @objc func handleUpdateProfile(){
+        UserServices.fetchUser(uid: user.uid) { user in
+            self.user = user
+            self.title = user.fullname
+        }
+    }
+    
     @objc func handleProfileButton(){
         let controller = ProfileViewController(user: user)
         navigationController?.pushViewController(controller, animated: true)
@@ -150,18 +195,18 @@ class ConversationViewController: UIViewController {
 
 extension ConversationViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return conversations.count
+        return isSearchMode ? filterConversations.count : conversations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ConversationCell
-        let conversation = conversations[indexPath.row]
+        let conversation = isSearchMode ? filterConversations[indexPath.row] : conversations[indexPath.row]
         cell.viewModel = MessageViewModel(message: conversation)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let conversation = conversations[indexPath.row]
+        let conversation = isSearchMode ? filterConversations[indexPath.row] : conversations[indexPath.row]
         showLoader(true)
         UserServices.fetchUser(uid: conversation.chatPartnerID) { [self] otherUser in
             showLoader(false)
@@ -170,6 +215,30 @@ extension ConversationViewController: UITableViewDelegate, UITableViewDataSource
         
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            showLoader(true)
+            let conversation = isSearchMode ? filterConversations[indexPath.row] : conversations[indexPath.row]
+            MessageServices.deleteMessages(otherUser: conversation.toID) { [self] error in
+                self.showLoader(false)
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                
+                    if isSearchMode{
+                        filterConversations.remove(at: indexPath.row)
+                    }else{
+                        conversations.remove(at: indexPath.row)
+                    }
+                    tableView.reloadData()
+            }
+        }
+    }
 }
 
 //MARK: - NewChatViewController delegate
@@ -182,4 +251,26 @@ extension ConversationViewController: NewChatViewControllerDelegate{
     }
     
     
+}
+//MARK: - UISearchResultsUpdating
+extension ConversationViewController: UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text?.lowercased() else {return}
+        filterConversations = conversations.filter({$0.fullname.contains(searchText) || $0.fullname.lowercased().contains(searchText)})
+        print(filterConversations)
+        tableView.reloadData()
+    }
+}
+
+//MARK: - UISearchControllerDelegate
+extension ConversationViewController: UISearchBarDelegate{
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+        searchBar.text = nil
+        searchBar.showsCancelButton = false
+    }
 }
