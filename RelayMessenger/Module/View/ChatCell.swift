@@ -96,6 +96,7 @@ class ChatCell: UICollectionViewCell {
         
         addSubview(profileImageView)
         profileImageView.anchor(left: leftAnchor,bottom: bottomAnchor,paddingLeft: 10)
+        profileImageView.contentMode = .scaleAspectFill
         
         addSubview(bubbleContainer)
         bubbleContainer.layer.cornerRadius = 12

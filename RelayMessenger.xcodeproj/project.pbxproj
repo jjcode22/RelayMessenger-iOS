@@ -37,6 +37,9 @@
 		285AA46D2BE8D3D500779765 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 285AA46C2BE8D3D500779765 /* Assets.xcassets */; };
 		285FB1582BB8E8EB00F5E95D /* ChatHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285FB1572BB8E8EB00F5E95D /* ChatHeader.swift */; };
 		285FB15A2BB8EFA800F5E95D /* CollectionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285FB1592BB8EFA800F5E95D /* CollectionViews.swift */; };
+		28999AA82C1174AD002FD3B5 /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28999AA72C1174AD002FD3B5 /* LoginTests.swift */; };
+		28999AAA2C11794A002FD3B5 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28999AA92C11794A002FD3B5 /* LoginViewModelTests.swift */; };
+		28999AAC2C118E47002FD3B5 /* RegisterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28999AAB2C118E47002FD3B5 /* RegisterViewModelTests.swift */; };
 		289EC2C02BAC161B001D8CB7 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289EC2BF2BAC161B001D8CB7 /* ConversationViewController.swift */; };
 		289EC2C22BAC3112001D8CB7 /* VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289EC2C12BAC3112001D8CB7 /* VC.swift */; };
 		289EC2C42BAC653B001D8CB7 /* LoginGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289EC2C32BAC653B001D8CB7 /* LoginGoogle.swift */; };
@@ -59,6 +62,16 @@
 		28E540D42BB1B89B0020BE40 /* MessageServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E540D32BB1B89B0020BE40 /* MessageServices.swift */; };
 		28F1FF9F2BB4BE4C00C3E20B /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F1FF9E2BB4BE4C00C3E20B /* Message.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		28999AA12C1173C7002FD3B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 283693EB2BA1C78A001D417E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 283693F22BA1C78A001D417E;
+			remoteInfo = RelayMessenger;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		282917412BBE27E1004D4D43 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +105,10 @@
 		285AA46C2BE8D3D500779765 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		285FB1572BB8E8EB00F5E95D /* ChatHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHeader.swift; sourceTree = "<group>"; };
 		285FB1592BB8EFA800F5E95D /* CollectionViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViews.swift; sourceTree = "<group>"; };
+		28999A9D2C1173C7002FD3B5 /* RelayMessengerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RelayMessengerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		28999AA72C1174AD002FD3B5 /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
+		28999AA92C11794A002FD3B5 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
+		28999AAB2C118E47002FD3B5 /* RegisterViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModelTests.swift; sourceTree = "<group>"; };
 		289EC2BF2BAC161B001D8CB7 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		289EC2C12BAC3112001D8CB7 /* VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.swift; sourceTree = "<group>"; };
 		289EC2C32BAC653B001D8CB7 /* LoginGoogle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginGoogle.swift; sourceTree = "<group>"; };
@@ -124,6 +141,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A2AE59D9A047D9CEE0D57DD /* Pods_RelayMessenger.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28999A9A2C1173C7002FD3B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				283693F52BA1C78A001D417E /* RelayMessenger */,
+				28999A9E2C1173C7002FD3B5 /* RelayMessengerTests */,
 				283693F42BA1C78A001D417E /* Products */,
 				CC603A3ECE3FEA53408DF1D6 /* Pods */,
 				02C361F28E086D6ED168DD65 /* Frameworks */,
@@ -178,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				283693F32BA1C78A001D417E /* RelayMessenger.app */,
+				28999A9D2C1173C7002FD3B5 /* RelayMessengerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -317,6 +343,24 @@
 			path = Class;
 			sourceTree = "<group>";
 		};
+		28999A9E2C1173C7002FD3B5 /* RelayMessengerTests */ = {
+			isa = PBXGroup;
+			children = (
+				28999AA62C11747F002FD3B5 /* AuthTests */,
+			);
+			path = RelayMessengerTests;
+			sourceTree = "<group>";
+		};
+		28999AA62C11747F002FD3B5 /* AuthTests */ = {
+			isa = PBXGroup;
+			children = (
+				28999AA72C1174AD002FD3B5 /* LoginTests.swift */,
+				28999AA92C11794A002FD3B5 /* LoginViewModelTests.swift */,
+				28999AAB2C118E47002FD3B5 /* RegisterViewModelTests.swift */,
+			);
+			path = AuthTests;
+			sourceTree = "<group>";
+		};
 		289EC2BE2BAC160A001D8CB7 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,6 +410,24 @@
 			productReference = 283693F32BA1C78A001D417E /* RelayMessenger.app */;
 			productType = "com.apple.product-type.application";
 		};
+		28999A9C2C1173C7002FD3B5 /* RelayMessengerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28999AA52C1173C7002FD3B5 /* Build configuration list for PBXNativeTarget "RelayMessengerTests" */;
+			buildPhases = (
+				28999A992C1173C7002FD3B5 /* Sources */,
+				28999A9A2C1173C7002FD3B5 /* Frameworks */,
+				28999A9B2C1173C7002FD3B5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				28999AA22C1173C7002FD3B5 /* PBXTargetDependency */,
+			);
+			name = RelayMessengerTests;
+			productName = RelayMessengerTests;
+			productReference = 28999A9D2C1173C7002FD3B5 /* RelayMessengerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -378,6 +440,11 @@
 				TargetAttributes = {
 					283693F22BA1C78A001D417E = {
 						CreatedOnToolsVersion = 15.2;
+					};
+					28999A9C2C1173C7002FD3B5 = {
+						CreatedOnToolsVersion = 15.2;
+						LastSwiftMigration = 1520;
+						TestTargetID = 283693F22BA1C78A001D417E;
 					};
 				};
 			};
@@ -395,6 +462,7 @@
 			projectRoot = "";
 			targets = (
 				283693F22BA1C78A001D417E /* RelayMessenger */,
+				28999A9C2C1173C7002FD3B5 /* RelayMessengerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -409,6 +477,13 @@
 				28BD0E3E2BA330CB005B1743 /* GoogleService-Info.plist in Resources */,
 				283693FE2BA1C78A001D417E /* Main.storyboard in Resources */,
 				285AA46D2BE8D3D500779765 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28999A9B2C1173C7002FD3B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,7 +601,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		28999A992C1173C7002FD3B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28999AAC2C118E47002FD3B5 /* RegisterViewModelTests.swift in Sources */,
+				28999AAA2C11794A002FD3B5 /* LoginViewModelTests.swift in Sources */,
+				28999AA82C1174AD002FD3B5 /* LoginTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		28999AA22C1173C7002FD3B5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 283693F22BA1C78A001D417E /* RelayMessenger */;
+			targetProxy = 28999AA12C1173C7002FD3B5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		283693FC2BA1C78A001D417E /* Main.storyboard */ = {
@@ -727,6 +820,45 @@
 			};
 			name = Release;
 		};
+		28999AA32C1173C7002FD3B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W67H4LNHQ4;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = jjmr.RelayMessengerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RelayMessenger.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RelayMessenger";
+			};
+			name = Debug;
+		};
+		28999AA42C1173C7002FD3B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W67H4LNHQ4;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = jjmr.RelayMessengerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RelayMessenger.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RelayMessenger";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -744,6 +876,15 @@
 			buildConfigurations = (
 				283694082BA1C78D001D417E /* Debug */,
 				283694092BA1C78D001D417E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28999AA52C1173C7002FD3B5 /* Build configuration list for PBXNativeTarget "RelayMessengerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28999AA32C1173C7002FD3B5 /* Debug */,
+				28999AA42C1173C7002FD3B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
