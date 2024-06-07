@@ -18,12 +18,12 @@ https://youtu.be/Hask4PyyQiw
 • Implemented Unit testing for authentication and messaging modules.
 
 ## Steps to run
-1. Clone the repo using git clone.\
-2. Run pod install in your local repo\
-3. Replace "YOUR_GOOGLEMAPSERVICES_API_KEY_HERE" with your Google Map Services API key in Support/ AppDelegate.\
+1. Clone the repo using git clone.
+2. Run pod install in your local repo
+3. Replace "YOUR_GOOGLEMAPSERVICES_API_KEY_HERE" with your Google Map Services API key in Support/ AppDelegate.
 4. Build and run on physical device or simulator.
 
-Thank you for reading :),
+Thank you for reading :),\
 Jubal Jacob.
 
 Connect with me on LinkedIn
