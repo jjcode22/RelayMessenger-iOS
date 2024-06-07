@@ -22,7 +22,7 @@ https://youtu.be/Hask4PyyQiw
 ## Steps to run
 1. Clone the repo using git clone.
 2. Run pod install in your local repo
-3. Configure your firebase project with Authentication,Cloud Firestore, and Storage services in console and download and paste your GoogleService-Info.plist file in /RelayMessenger/support/ directory.
+3. Configure your firebase project with Authentication,Cloud Firestore, and Storage services in your firebase console and download and paste your GoogleService-Info.plist file in the following directory /RelayMessenger/Support/ .
 4. Replace "YOUR_GOOGLEMAPSERVICES_API_KEY_HERE" with your Google Map Services API key in Support/ AppDelegate.
 5. Build and run on physical device or simulator.
 
