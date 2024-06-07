@@ -16,6 +16,7 @@ class ChatViewController: UICollectionViewController {
             self.emptyView.isHidden = !messages.isEmpty
         }
     }
+    var isSendingLocation:Bool = false
     
     private lazy var customInputView: CustomInputView = {
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)

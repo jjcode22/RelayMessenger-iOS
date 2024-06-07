@@ -143,6 +143,7 @@ class CustomInputView: UIView{
     
     @objc func handlePostButton(){
         delegate?.inputView(self, wantToUploadMessage: inputTextView.text)
+        handleTextDidChange()
     }
     
     @objc func handleAttach(){

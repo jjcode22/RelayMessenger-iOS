@@ -28,12 +28,18 @@ extension ChatViewController{
     }
     
     @objc func handleCurrentLocation(){
-        FLocationManager.shared.start { info in
+        guard !isSendingLocation else { return }
+                isSendingLocation = true
+        
+        FLocationManager.shared.start { [weak self] info in
+            guard let self = self else {return}
             guard let lat = info.latitude else {return}
             guard let long = info.longitude else {return}
             
             self.uploadLocation(lat: "\(lat)", long: "\(long)")
             FLocationManager.shared.stop()
+            
+            self.isSendingLocation = false
         }
         
     }
