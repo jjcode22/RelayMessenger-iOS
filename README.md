@@ -12,10 +12,10 @@ https://youtu.be/Hask4PyyQiw
 ## Features
 
 • User Authentication using FirebaseAuth and login with either email/password or with Google.\
-• User can send and view text/audio/video/image\ messages to or from other users. Media can be captured from camera or sent from gallery.\
+• User can send and view text/audio/video/image messages to or from other users. Media can be captured from camera or sent from gallery.\
 • User can search for chats to find conversations with other users.\
 • User can share their location with other users. Implemented via Google Map Services\
-• Implemented Unit testing for authentication and messaging modules.\
+• Implemented Unit testing for authentication and messaging modules.
 
 ## Steps to run
 1. Clone the repo using git clone.\
@@ -23,7 +23,11 @@ https://youtu.be/Hask4PyyQiw
 3. Replace "YOUR_GOOGLEMAPSERVICES_API_KEY_HERE" with your Google Map Services API key in Support/ AppDelegate.\
 4. Build and run on physical device or simulator.
 
-Thank you for reading :), Jubal Jacob
+Thank you for reading :),
+Jubal Jacob.
+
+Connect with me on LinkedIn
+https://www.linkedin.com/in/jubal-jacob-a69a09291/
 
 
 
