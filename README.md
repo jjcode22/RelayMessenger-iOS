@@ -3,6 +3,10 @@
 ## A chatting app with functionality similar to WhatsApp.
 Developed completely using UIKit 100% programmatically.
 
+Demo video:
+
+[![](https://markdown-videos-api.jorgenkh.no/youtube/Hask4PyyQiw)](https://youtu.be/Hask4PyyQiw)
+
 https://youtu.be/Hask4PyyQiw
 
 ## Features
